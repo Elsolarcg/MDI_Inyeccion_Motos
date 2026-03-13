@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cursos de Aire Acondicionado — MDI | Manual del Independiente</title>
   <meta name="description" content="Aprende a instalar y mantener aire acondicionado en un fin de semana. Cursos presenciales en San Justo. Cupos limitados." />
+
+  <!-- Preload theme to avoid flash of wrong mode -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('mdi-theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+      // default: light (no class)
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,22 +26,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            brand: {
-              blue: '#003D7A',
-              'blue-light': '#0050A0',
-              yellow: '#FFB800',
-              'yellow-dark': '#D99E00',
-              dark: '#1A1A1A',
-              'dark-2': '#111827',
-              'dark-3': '#0D1117',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          }
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
         }
       }
     }
@@ -68,25 +67,15 @@
 
   <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background-color: #1A1A1A; color: #ffffff; }
 
     /* Countdown */
-    .countdown-unit { min-width: 64px; }
     .countdown-num {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       font-weight: 900;
       line-height: 1;
       color: #FFB800;
     }
-    @media (max-width: 640px) {
-      .countdown-num { font-size: 1.75rem; }
-      .countdown-unit { min-width: 48px; }
-    }
-
-    /* Cards hover */
-    .course-card { transition: transform 0.2s, border-color 0.2s; }
-    .course-card:hover { transform: translateY(-4px); }
-    .course-card.featured { border-color: #FFB800 !important; }
+    @media (max-width: 480px) { .countdown-num { font-size: 1.6rem; } }
 
     /* Gradient divider */
     .gradient-line {
@@ -94,176 +83,197 @@
       background: linear-gradient(90deg, transparent, #FFB800, transparent);
     }
 
-    /* Form */
+    /* Form inputs */
     .form-input {
-      background-color: #111827;
-      border: 1px solid #374151;
-      color: #fff;
+      background-color: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      color: #0B1120;
       border-radius: 8px;
       padding: 12px 16px;
       width: 100%;
       font-size: 1rem;
       outline: none;
       transition: border-color 0.2s;
+      font-family: 'Inter', sans-serif;
     }
-    .form-input:focus { border-color: #FFB800; }
-    .form-input::placeholder { color: #6B7280; }
+    .form-input:focus { border-color: #003D7A; }
+    .form-input::placeholder { color: #9CA3AF; }
 
-    /* Sticky WhatsApp */
+    .dark .form-input {
+      background-color: #111827;
+      border-color: #374151;
+      color: #fff;
+    }
+    .dark .form-input:focus { border-color: #FFB800; }
+
+    /* Card hover */
+    .course-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .course-card:hover { transform: translateY(-4px); }
+
+    /* Floating WhatsApp */
     .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 999;
-      width: 60px;
-      height: 60px;
-      background-color: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 60px; height: 60px;
+      background-color: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
       transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
     }
     .whatsapp-float:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
     }
 
-    /* Urgency bar */
-    .urgency-bar {
-      background: linear-gradient(90deg, #003D7A, #0050A0, #003D7A);
-      animation: shimmer 3s infinite;
-    }
-    @keyframes shimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Section fade */
-    .section-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #FFB800;
-    }
-
-    /* Module pill */
+    /* Module check list */
     .module-pill {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #1F2937;
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid #E5E7EB;
     }
     .module-pill:last-child { border-bottom: none; }
-    .check-icon {
-      width: 20px;
-      height: 20px;
-      background-color: #003D7A;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+    .dark .module-pill { border-bottom-color: #1F2937; }
+    .check-dot {
+      width: 20px; height: 20px; background: #003D7A;
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 1px;
     }
 
-    /* Scroll smooth */
     html { scroll-behavior: smooth; }
   </style>
 </head>
 
-<body>
+<!-- Default: light mode. Dark mode adds class "dark" to <html> -->
+<body class="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#0B1120] dark:text-white transition-colors duration-200" style="font-family:'Inter',sans-serif;">
 
   <!-- =================== STICKY NAV =================== -->
-  <nav class="sticky top-0 z-50 bg-brand-dark-3 border-b border-gray-800">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="font-black text-lg tracking-tight text-white">MDI</span>
-        <span class="text-gray-500 text-sm hidden sm:inline">| Manual del Independiente</span>
+  <nav class="sticky top-0 z-50 bg-white dark:bg-[#0D1117] border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <span class="font-black text-lg tracking-tight text-[#0B1120] dark:text-white">MDI</span>
+        <span class="text-gray-400 text-sm hidden sm:inline">| Manual del Independiente</span>
       </div>
-      <a
-        href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
-        target="_blank"
-        onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_nav');"
-        class="bg-[#25D366] hover:bg-[#1fb358] text-white text-sm font-bold px-4 py-2 rounded-full transition-colors"
-      >
-        Escribir al WhatsApp
-      </a>
+
+      <div class="flex items-center gap-2">
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          aria-label="Cambiar modo de color"
+          class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1F2937] text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        >
+          <!-- Sun (visible in dark mode, click to go light) -->
+          <svg id="icon-sun" class="hidden dark:block w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon (visible in light mode, click to go dark) -->
+          <svg id="icon-moon" class="block dark:hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <a
+          href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
+          target="_blank"
+          onclick="fbq('track','Contact'); gtag('event','click_whatsapp_nav');"
+          class="bg-[#25D366] hover:bg-[#1fb358] text-white text-sm font-bold px-4 py-2 rounded-full transition-colors whitespace-nowrap"
+        >
+          Escribir al WhatsApp
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- =================== URGENCY BAR =================== -->
-  <div class="urgency-bar text-center py-2 px-4">
+  <div class="bg-[#003D7A] text-center py-2 px-4">
     <p class="text-sm font-semibold text-white">
-      ⚡ Cupos limitados — 28 y 29 de marzo, San Justo &nbsp;|&nbsp; <span class="text-brand-yellow">Inscribite antes de que se llenen</span>
+      ⚡ Cupos limitados — 28 y 29 de marzo, San Justo &nbsp;|&nbsp;
+      <span class="text-[#FFB800]">Inscribite antes de que se llenen</span>
     </p>
   </div>
 
-  <!-- =================== HERO =================== -->
-  <section class="bg-brand-dark-3 pt-16 pb-20 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="section-tag mb-4">Cursos Presenciales · San Justo · Marzo 2026</p>
+  <!-- =================== HERO (dark always, split layout) =================== -->
+  <section class="bg-[#0B1120] text-white pt-14 pb-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
-        Dominá el<br />
-        <span class="text-brand-yellow">Aire Acondicionado</span>
-      </h1>
+        <!-- Left: text -->
+        <div class="flex-1 text-center lg:text-left order-2 lg:order-1">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#FFB800] mb-4">Cursos Presenciales · San Justo · Marzo 2026</p>
 
-      <p class="text-xl sm:text-2xl text-gray-300 font-medium mb-4 max-w-2xl mx-auto">
-        Aprendé a instalarlo y mantenerlo en un fin de semana.<br />
-        <span class="text-white font-semibold">El oficio que más se paga hoy.</span>
-      </p>
+          <h1 class="text-4xl sm:text-5xl font-black leading-tight mb-5">
+            Dominá el<br />
+            <span class="text-[#FFB800]">Aire Acondicionado</span>
+          </h1>
 
-      <p class="text-gray-400 text-base mb-10 max-w-xl mx-auto">
-        Cursos 100% prácticos. Herramientas reales. Método probado por técnicos independientes que ya viven del oficio.
-      </p>
+          <p class="text-lg sm:text-xl text-gray-300 mb-3 max-w-lg">
+            Aprendé a instalarlo y mantenerlo en un fin de semana.
+            <span class="text-white font-semibold"> El oficio que más se paga hoy.</span>
+          </p>
+          <p class="text-gray-400 text-base mb-8 max-w-md">
+            Cursos 100% prácticos. Herramientas reales. Método probado por técnicos independientes que ya viven del oficio.
+          </p>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-14">
-        <a
-          href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
-          target="_blank"
-          onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_hero');"
-          class="bg-[#25D366] hover:bg-[#1fb358] text-white font-bold text-lg px-8 py-4 rounded-xl transition-colors shadow-lg"
-        >
-          Inscribirme por WhatsApp
-        </a>
-        <a
-          href="#lista-espera"
-          class="bg-brand-blue hover:bg-brand-blue-light text-white font-bold text-lg px-8 py-4 rounded-xl transition-colors border border-brand-blue-light"
-        >
-          Reservar mi lugar
-        </a>
-      </div>
-
-      <!-- Countdown -->
-      <div>
-        <p class="text-gray-400 text-sm font-semibold mb-3 uppercase tracking-wider">Faltan para el primer curso:</p>
-        <div class="flex justify-center gap-4">
-          <div class="countdown-unit text-center">
-            <div class="countdown-num" id="cd-days">--</div>
-            <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">días</div>
+          <!-- Countdown -->
+          <div class="mb-8">
+            <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">Faltan para el primer curso:</p>
+            <div class="flex justify-center lg:justify-start gap-3 sm:gap-5">
+              <div class="text-center">
+                <div class="countdown-num" id="cd-days">--</div>
+                <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">días</div>
+              </div>
+              <div class="countdown-num font-black" style="color:#FFB800;line-height:1;font-size:2.25rem;align-self:flex-start">:</div>
+              <div class="text-center">
+                <div class="countdown-num" id="cd-hours">--</div>
+                <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">horas</div>
+              </div>
+              <div class="countdown-num font-black" style="color:#FFB800;line-height:1;font-size:2.25rem;align-self:flex-start">:</div>
+              <div class="text-center">
+                <div class="countdown-num" id="cd-mins">--</div>
+                <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">min</div>
+              </div>
+              <div class="countdown-num font-black" style="color:#FFB800;line-height:1;font-size:2.25rem;align-self:flex-start">:</div>
+              <div class="text-center">
+                <div class="countdown-num" id="cd-secs">--</div>
+                <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">seg</div>
+              </div>
+            </div>
           </div>
-          <div class="text-brand-yellow countdown-num font-black self-start mt-1">:</div>
-          <div class="countdown-unit text-center">
-            <div class="countdown-num" id="cd-hours">--</div>
-            <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">horas</div>
-          </div>
-          <div class="text-brand-yellow countdown-num font-black self-start mt-1">:</div>
-          <div class="countdown-unit text-center">
-            <div class="countdown-num" id="cd-mins">--</div>
-            <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">min</div>
-          </div>
-          <div class="text-brand-yellow countdown-num font-black self-start mt-1">:</div>
-          <div class="countdown-unit text-center">
-            <div class="countdown-num" id="cd-secs">--</div>
-            <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mt-1">seg</div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <a
+              href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
+              target="_blank"
+              onclick="fbq('track','Contact'); gtag('event','click_whatsapp_hero');"
+              class="bg-[#25D366] hover:bg-[#1fb358] text-white font-bold text-base px-7 py-4 rounded-xl transition-colors shadow-lg text-center"
+            >
+              Inscribirme por WhatsApp
+            </a>
+            <a
+              href="#lista-espera"
+              class="bg-[#003D7A] hover:bg-[#0050A0] text-white font-bold text-base px-7 py-4 rounded-xl transition-colors border border-[#0050A0] text-center"
+            >
+              Reservar mi lugar
+            </a>
           </div>
         </div>
+
+        <!-- Right: VSL video -->
+        <div class="flex-1 w-full max-w-lg lg:max-w-none order-1 lg:order-2">
+          <!-- TODO: Reemplazar OF0cg5u-eRQ con el ID del VSL de AC cuando esté listo -->
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+               style="position:relative; width:100%; padding-top:56.25%;">
+            <iframe
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              src="https://www.youtube.com/embed/OF0cg5u-eRQ?controls=1&modestbranding=1"
+              title="MDI — Cursos de Aire Acondicionado"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="text-gray-500 text-xs text-center mt-2">▶ Mirá por qué vale la pena capacitarse con MDI</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -271,108 +281,100 @@
   <div class="gradient-line"></div>
 
   <!-- =================== PROGRAMAS =================== -->
-  <section class="py-20 px-4 bg-brand-dark">
+  <section class="py-20 px-4 bg-[#F8FAFC] dark:bg-[#1A1A1A]">
     <div class="max-w-6xl mx-auto">
-      <p class="section-tag text-center mb-3">Próximos programas</p>
-      <h2 class="text-3xl sm:text-4xl font-black text-center mb-4">Elegí tu capacitación</h2>
-      <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">Todos los cursos son presenciales en San Justo, Buenos Aires. Traé ganas — las herramientas las ponemos nosotros.</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] text-center mb-3">Próximos programas</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-3 text-[#0B1120] dark:text-white">Elegí tu capacitación</h2>
+      <p class="text-gray-500 text-center mb-12 max-w-xl mx-auto">Todos los cursos son presenciales en San Justo, Buenos Aires. Traé ganas — las herramientas las ponemos nosotros.</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
         <!-- Card 1: Instalación -->
-        <div class="course-card bg-brand-dark-2 border border-gray-700 rounded-2xl p-6 flex flex-col">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-full">28 MAR · SÁB</span>
+        <div class="course-card bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-700 rounded-2xl p-6 flex flex-col shadow-sm">
+          <div class="mb-4">
+            <span class="bg-[#003D7A] text-white text-xs font-bold px-3 py-1 rounded-full">28 MAR · SÁB</span>
           </div>
-          <h3 class="text-xl font-black mb-2">Instalación AC</h3>
-          <p class="text-gray-400 text-sm mb-4 flex-1">
+          <h3 class="text-xl font-black mb-2 text-[#0B1120] dark:text-white">Instalación AC</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex-1">
             Aprende a instalar equipos split desde cero. Cableado, cañerías de cobre, carga de gas y puesta en marcha.
           </p>
-          <div class="border-t border-gray-700 pt-4 mt-2">
-            <p class="text-brand-yellow text-2xl font-black">$200.000 ARS</p>
-            <p class="text-gray-500 text-xs mt-1">1 día · 8 horas · San Justo</p>
+          <div class="border-t border-gray-100 dark:border-gray-700 pt-4">
+            <p class="text-[#003D7A] dark:text-[#FFB800] text-2xl font-black">$200.000 ARS</p>
+            <p class="text-gray-400 text-xs mt-1">1 día · 8 horas · San Justo</p>
           </div>
           <a
             href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20Curso%20de%20Instalaci%C3%B3n%20de%20AC%20del%2028%20de%20marzo"
             target="_blank"
-            onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_instalacion');"
-            class="mt-4 w-full bg-brand-blue hover:bg-brand-blue-light text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
-          >
-            Me interesa →
-          </a>
+            onclick="fbq('track','Contact'); gtag('event','click_whatsapp_instalacion');"
+            class="mt-4 w-full bg-[#003D7A] hover:bg-[#0050A0] text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
+          >Me interesa →</a>
         </div>
 
         <!-- Card 2: Mantenimiento -->
-        <div class="course-card bg-brand-dark-2 border border-gray-700 rounded-2xl p-6 flex flex-col">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-full">29 MAR · DOM</span>
+        <div class="course-card bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-700 rounded-2xl p-6 flex flex-col shadow-sm">
+          <div class="mb-4">
+            <span class="bg-[#003D7A] text-white text-xs font-bold px-3 py-1 rounded-full">29 MAR · DOM</span>
           </div>
-          <h3 class="text-xl font-black mb-2">Mantenimiento AC</h3>
-          <p class="text-gray-400 text-sm mb-4 flex-1">
+          <h3 class="text-xl font-black mb-2 text-[#0B1120] dark:text-white">Mantenimiento AC</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex-1">
             Diagnóstico de fallas, limpieza profunda, mantenimiento preventivo y correctivo. Usá el multímetro como un profesional.
           </p>
-          <div class="border-t border-gray-700 pt-4 mt-2">
-            <p class="text-brand-yellow text-2xl font-black">$200.000 ARS</p>
-            <p class="text-gray-500 text-xs mt-1">1 día · 8 horas · San Justo</p>
+          <div class="border-t border-gray-100 dark:border-gray-700 pt-4">
+            <p class="text-[#003D7A] dark:text-[#FFB800] text-2xl font-black">$200.000 ARS</p>
+            <p class="text-gray-400 text-xs mt-1">1 día · 8 horas · San Justo</p>
           </div>
           <a
             href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20Curso%20de%20Mantenimiento%20de%20AC%20del%2029%20de%20marzo"
             target="_blank"
-            onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_mantenimiento');"
-            class="mt-4 w-full bg-brand-blue hover:bg-brand-blue-light text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
-          >
-            Me interesa →
-          </a>
+            onclick="fbq('track','Contact'); gtag('event','click_whatsapp_mantenimiento');"
+            class="mt-4 w-full bg-[#003D7A] hover:bg-[#0050A0] text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
+          >Me interesa →</a>
         </div>
 
         <!-- Card 3: COMBO (featured) -->
-        <div class="course-card featured bg-brand-dark-2 border-2 border-brand-yellow rounded-2xl p-6 flex flex-col relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-brand-yellow text-brand-dark text-xs font-black px-3 py-1 rounded-bl-xl">
+        <div class="course-card bg-white dark:bg-[#111827] border-2 border-[#FFB800] rounded-2xl p-6 flex flex-col shadow-lg relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-[#FFB800] text-[#0B1120] text-xs font-black px-3 py-1 rounded-bl-xl">
             MEJOR VALOR
           </div>
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-brand-yellow text-brand-dark text-xs font-black px-3 py-1 rounded-full">28 Y 29 MAR</span>
+          <div class="mb-4">
+            <span class="bg-[#FFB800] text-[#0B1120] text-xs font-black px-3 py-1 rounded-full">28 Y 29 MAR</span>
           </div>
-          <h3 class="text-xl font-black mb-2">COMBO Completo</h3>
-          <p class="text-gray-400 text-sm mb-4 flex-1">
+          <h3 class="text-xl font-black mb-2 text-[#0B1120] dark:text-white">COMBO Completo</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex-1">
             Instalación + Mantenimiento. Los dos cursos en un fin de semana. La formación completa para trabajar de inmediato.
           </p>
-          <div class="border-t border-gray-700 pt-4 mt-2">
-            <p class="text-brand-yellow text-2xl font-black">$300.000 ARS</p>
-            <p class="text-green-400 text-xs font-semibold mt-1">Ahorrás $100.000 ARS</p>
-            <p class="text-gray-500 text-xs mt-1">2 días · 16 horas · San Justo</p>
+          <div class="border-t border-gray-100 dark:border-gray-700 pt-4">
+            <p class="text-[#003D7A] dark:text-[#FFB800] text-2xl font-black">$300.000 ARS</p>
+            <p class="text-green-600 dark:text-green-400 text-xs font-semibold mt-1">Ahorrás $100.000 ARS</p>
+            <p class="text-gray-400 text-xs mt-1">2 días · 16 horas · San Justo</p>
           </div>
           <a
             href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20COMBO%20Instalaci%C3%B3n%20%2B%20Mantenimiento%20de%20AC%20(28%20y%2029%20de%20marzo)"
             target="_blank"
-            onclick="fbq('track', 'InitiateCheckout'); gtag('event', 'click_whatsapp_combo');"
-            class="mt-4 w-full bg-brand-yellow hover:bg-brand-yellow-dark text-brand-dark font-black py-3 rounded-lg text-center transition-colors text-sm"
-          >
-            Quiero el COMBO →
-          </a>
+            onclick="fbq('track','InitiateCheckout'); gtag('event','click_whatsapp_combo');"
+            class="mt-4 w-full bg-[#FFB800] hover:bg-[#D99E00] text-[#0B1120] font-black py-3 rounded-lg text-center transition-colors text-sm"
+          >Quiero el COMBO →</a>
         </div>
 
         <!-- Card 4: R32 -->
-        <div class="course-card bg-brand-dark-2 border border-gray-700 rounded-2xl p-6 flex flex-col">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-gray-700 text-gray-200 text-xs font-bold px-3 py-1 rounded-full">4 ABR · SÁB</span>
+        <div class="course-card bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-700 rounded-2xl p-6 flex flex-col shadow-sm">
+          <div class="mb-4">
+            <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-bold px-3 py-1 rounded-full">4 ABR · SÁB</span>
           </div>
-          <h3 class="text-xl font-black mb-2">Seminario Gas R32</h3>
-          <p class="text-gray-400 text-sm mb-4 flex-1">
+          <h3 class="text-xl font-black mb-2 text-[#0B1120] dark:text-white">Seminario Gas R32</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex-1">
             El gas que está reemplazando al R22 en toda Latinoamérica. Propiedades, manejo seguro, herramientas y certificación técnica.
           </p>
-          <div class="border-t border-gray-700 pt-4 mt-2">
-            <p class="text-brand-yellow text-2xl font-black">$45.000 ARS</p>
-            <p class="text-gray-500 text-xs mt-1">1 día · San Justo · 4 abr</p>
+          <div class="border-t border-gray-100 dark:border-gray-700 pt-4">
+            <p class="text-[#003D7A] dark:text-[#FFB800] text-2xl font-black">$45.000 ARS</p>
+            <p class="text-gray-400 text-xs mt-1">1 día · San Justo · 4 abr</p>
           </div>
           <a
             href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20Seminario%20de%20Gas%20R32%20del%204%20de%20abril"
             target="_blank"
-            onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_r32');"
-            class="mt-4 w-full bg-brand-blue hover:bg-brand-blue-light text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
-          >
-            Me interesa →
-          </a>
+            onclick="fbq('track','Contact'); gtag('event','click_whatsapp_r32');"
+            class="mt-4 w-full bg-[#003D7A] hover:bg-[#0050A0] text-white font-bold py-3 rounded-lg text-center transition-colors text-sm"
+          >Me interesa →</a>
         </div>
 
       </div>
@@ -382,142 +384,59 @@
   <div class="gradient-line"></div>
 
   <!-- =================== QUÉ VAS A APRENDER =================== -->
-  <section class="py-20 px-4 bg-brand-dark-3">
+  <section class="py-20 px-4 bg-[#F1F5F9] dark:bg-[#0D1117]">
     <div class="max-w-5xl mx-auto">
-      <p class="section-tag text-center mb-3">Contenido</p>
-      <h2 class="text-3xl sm:text-4xl font-black text-center mb-4">¿Qué vas a aprender?</h2>
-      <p class="text-gray-400 text-center mb-14 max-w-xl mx-auto">Cada módulo está diseñado para que puedas aplicarlo el mismo día que terminás el curso.</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] text-center mb-3">Contenido</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-3 text-[#0B1120] dark:text-white">¿Qué vas a aprender?</h2>
+      <p class="text-gray-500 text-center mb-14 max-w-xl mx-auto">Cada módulo está diseñado para que puedas aplicarlo el mismo día que terminás el curso.</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- Instalación -->
-        <div class="bg-brand-dark-2 rounded-2xl p-6">
+        <div class="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-xl">🔧</div>
-            <h3 class="font-black text-lg">Instalación AC</h3>
+            <div class="w-10 h-10 bg-[#003D7A] rounded-xl flex items-center justify-center text-lg">🔧</div>
+            <h3 class="font-black text-lg text-[#0B1120] dark:text-white">Instalación AC</h3>
           </div>
           <div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Fundamentos eléctricos del sistema</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Montaje del equipo split</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Cañerías de cobre y conexiones</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Carga y manejo de gas refrigerante</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Puesta en marcha y verificación</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Conexión al tablero eléctrico</span>
-            </div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Fundamentos eléctricos del sistema</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Montaje del equipo split</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Cañerías de cobre y conexiones</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Carga y manejo de gas refrigerante</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Puesta en marcha y verificación</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Conexión al tablero eléctrico</span></div>
           </div>
         </div>
 
-        <!-- Mantenimiento -->
-        <div class="bg-brand-dark-2 rounded-2xl p-6">
+        <div class="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-xl">🔬</div>
-            <h3 class="font-black text-lg">Mantenimiento AC</h3>
+            <div class="w-10 h-10 bg-[#003D7A] rounded-xl flex items-center justify-center text-lg">🔬</div>
+            <h3 class="font-black text-lg text-[#0B1120] dark:text-white">Mantenimiento AC</h3>
           </div>
           <div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Diagnóstico de fallas eléctricas</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Limpieza profunda (evaporador y condensador)</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Uso del multímetro en AC</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Mantenimiento preventivo y correctivo</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Detección de pérdidas de gas</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Reparaciones frecuentes del mercado</span>
-            </div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Diagnóstico de fallas eléctricas</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Limpieza profunda (evaporador y condensador)</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Uso del multímetro en AC</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Mantenimiento preventivo y correctivo</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Detección de pérdidas de gas</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Reparaciones frecuentes del mercado</span></div>
           </div>
         </div>
 
-        <!-- R32 -->
-        <div class="bg-brand-dark-2 rounded-2xl p-6">
+        <div class="bg-white dark:bg-[#111827] rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-xl">⚗️</div>
-            <h3 class="font-black text-lg">Seminario R32</h3>
+            <div class="w-10 h-10 bg-[#003D7A] rounded-xl flex items-center justify-center text-lg">⚗️</div>
+            <h3 class="font-black text-lg text-[#0B1120] dark:text-white">Seminario R32</h3>
           </div>
           <div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Propiedades del gas R32</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Comparación R32 vs R22 vs R410A</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Herramientas y equipos específicos</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Riesgos, seguridad y EPP</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Normativa vigente y certificación</span>
-            </div>
-            <div class="module-pill">
-              <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <span class="text-gray-300 text-sm">Por qué el mercado migra al R32</span>
-            </div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Propiedades del gas R32</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Comparación R32 vs R22 vs R410A</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Herramientas y equipos específicos</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Riesgos, seguridad y EPP</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Normativa vigente y certificación</span></div>
+            <div class="module-pill"><div class="check-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="text-gray-600 dark:text-gray-300 text-sm">Por qué el mercado migra al R32</span></div>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <div class="gradient-line"></div>
-
-  <!-- =================== SOCIAL PROOF STATS =================== -->
-  <section class="py-16 px-4 bg-brand-dark">
-    <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div>
-          <p class="text-4xl font-black text-brand-yellow">+25</p>
-          <p class="text-gray-400 text-sm mt-1">técnicos formados</p>
-        </div>
-        <div>
-          <p class="text-4xl font-black text-brand-yellow">100%</p>
-          <p class="text-gray-400 text-sm mt-1">práctica real</p>
-        </div>
-        <div>
-          <p class="text-4xl font-black text-brand-yellow">1 día</p>
-          <p class="text-gray-400 text-sm mt-1">para empezar a cobrar</p>
-        </div>
-        <div>
-          <p class="text-4xl font-black text-brand-yellow">San Justo</p>
-          <p class="text-gray-400 text-sm mt-1">presencial, GBA</p>
-        </div>
       </div>
     </div>
   </section>
@@ -525,50 +444,115 @@
   <div class="gradient-line"></div>
 
   <!-- =================== SOBRE MIGUEL =================== -->
-  <section class="py-20 px-4 bg-brand-dark-3">
+  <section class="py-20 px-4 bg-[#F8FAFC] dark:bg-[#1A1A1A]">
     <div class="max-w-5xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="flex flex-col md:flex-row items-center gap-10">
 
-        <!-- Foto -->
         <div class="flex-shrink-0">
-          <div class="w-56 h-56 rounded-2xl overflow-hidden border-2 border-brand-yellow bg-brand-dark-2 flex items-center justify-center">
+          <div class="w-52 h-52 rounded-2xl overflow-hidden border-2 border-[#FFB800] bg-[#F1F5F9] dark:bg-[#111827] flex items-center justify-center">
             <!-- TODO: reemplazar con imagen real: <img src="img/miguel.jpg" alt="Miguel Ángel Martínez" class="w-full h-full object-cover" /> -->
             <div class="text-center px-4">
-              <p class="text-5xl mb-3">👷</p>
-              <p class="text-gray-500 text-xs">Foto de Miguel<br/>(agregar img/miguel.jpg)</p>
+              <p class="text-5xl mb-2">👷</p>
+              <p class="text-gray-400 text-xs">Agregar<br/>img/miguel.jpg</p>
             </div>
           </div>
         </div>
 
-        <!-- Bio -->
         <div class="flex-1">
-          <p class="section-tag mb-2">Tu instructor</p>
-          <h2 class="text-3xl font-black mb-1">Miguel Ángel Martínez</h2>
-          <p class="text-brand-yellow font-semibold mb-5">Fundador de MDI · Técnico y formador de independientes</p>
-          <blockquote class="border-l-4 border-brand-yellow pl-4 text-gray-300 italic text-lg mb-6 leading-relaxed">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] mb-2">Tu instructor</p>
+          <h2 class="text-3xl font-black mb-1 text-[#0B1120] dark:text-white">Miguel Ángel Martínez</h2>
+          <p class="text-[#003D7A] dark:text-[#FFB800] font-semibold mb-5">Fundador de MDI · Técnico y formador de independientes</p>
+          <blockquote class="border-l-4 border-[#FFB800] pl-4 text-gray-600 dark:text-gray-300 italic text-lg mb-5 leading-relaxed">
             "Aprendí instalando, y casi quemo el primer compresor. Hoy te enseño en un día lo que a mí me tomó años."
           </blockquote>
-          <p class="text-gray-400 leading-relaxed mb-4">
-            Miguel fundó MDI para que ningún técnico independiente tenga que aprender de los errores caros que él cometió. Formó más de 25 alumnos en inyección electrónica de motos y hoy abre la primera edición de sus cursos de Aire Acondicionado.
+          <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-sm">
+            Miguel fundó MDI para que ningún técnico independiente tenga que aprender de los errores caros que él cometió. Formó más de 25 alumnos y hoy abre la primera edición de sus cursos de Aire Acondicionado.
           </p>
-          <p class="text-gray-400 leading-relaxed">
+          <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">
             Metodología directa: sin teoría de más, sin relleno. Cada hora del curso es práctica sobre el equipo real.
           </p>
-          <div class="flex gap-4 mt-6">
-            <div class="bg-brand-dark-2 rounded-xl px-4 py-3 text-center">
-              <p class="text-brand-yellow font-black text-xl">+25</p>
-              <p class="text-gray-500 text-xs">alumnos formados</p>
-            </div>
-            <div class="bg-brand-dark-2 rounded-xl px-4 py-3 text-center">
-              <p class="text-brand-yellow font-black text-xl">San Justo</p>
-              <p class="text-gray-500 text-xs">Buenos Aires</p>
-            </div>
-            <div class="bg-brand-dark-2 rounded-xl px-4 py-3 text-center">
-              <p class="text-brand-yellow font-black text-xl">2025</p>
-              <p class="text-gray-500 text-xs">desde</p>
-            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="gradient-line"></div>
+
+  <!-- =================== TESTIMONIOS (YouTube Shorts) =================== -->
+  <section class="py-20 px-4 bg-[#F1F5F9] dark:bg-[#0D1117]">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] text-center mb-3">Comunidad MDI</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-3 text-[#0B1120] dark:text-white">Lo que dicen nuestros alumnos</h2>
+      <p class="text-gray-500 text-center mb-12 max-w-xl mx-auto">Técnicos que invirtieron en capacitarse y hoy viven del oficio.</p>
+
+      <!-- TODO: Reemplazar los IDs de YouTube con testimonios de alumnos del curso de AC una vez disponibles -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Testimonio 1 -->
+        <div class="bg-white dark:bg-[#111827] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div class="relative w-full bg-slate-900" style="padding-top:177%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/v0kEm6QQVKo"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 border-t border-gray-100 dark:border-gray-700">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">"Perdía trabajos que podía hacer yo. Ahora tengo otra herramienta y otra fuente de ingresos."</p>
+            <p class="font-bold text-sm text-[#0B1120] dark:text-white">— Carlos M. <span class="text-xs font-normal text-gray-400 block">Técnico independiente</span></p>
           </div>
         </div>
+
+        <!-- Testimonio 2 -->
+        <div class="bg-white dark:bg-[#111827] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div class="relative w-full bg-slate-900" style="padding-top:177%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/vtfOJvpN0l4"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 border-t border-gray-100 dark:border-gray-700">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">"Miguel explica tan claro que al otro día ya estaba aplicando lo que aprendí."</p>
+            <p class="font-bold text-sm text-[#0B1120] dark:text-white">— Javier R. <span class="text-xs font-normal text-gray-400 block">Mecánico independiente</span></p>
+          </div>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="bg-white dark:bg-[#111827] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div class="relative w-full bg-slate-900" style="padding-top:177%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/qcAgCkIo_co"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 border-t border-gray-100 dark:border-gray-700">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">"La mejor inversión. Con el primer trabajo recuperé lo que pagué por el curso."</p>
+            <p class="font-bold text-sm text-[#0B1120] dark:text-white">— Diego S. <span class="text-xs font-normal text-gray-400 block">Técnico MDI</span></p>
+          </div>
+        </div>
+
+        <!-- Testimonio 4 -->
+        <div class="bg-white dark:bg-[#111827] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div class="relative w-full bg-slate-900" style="padding-top:177%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/MDuJYbHyJuE"
+              frameborder="0"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 border-t border-gray-100 dark:border-gray-700">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">"El método de Miguel es directo y práctico. Nada de teoría que no sirve."</p>
+            <p class="font-bold text-sm text-[#0B1120] dark:text-white">— Andrés F. <span class="text-xs font-normal text-gray-400 block">Alumno MDI</span></p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -576,26 +560,26 @@
   <div class="gradient-line"></div>
 
   <!-- =================== CÓMO FUNCIONA =================== -->
-  <section class="py-20 px-4 bg-brand-dark">
+  <section class="py-20 px-4 bg-[#F8FAFC] dark:bg-[#1A1A1A]">
     <div class="max-w-4xl mx-auto">
-      <p class="section-tag text-center mb-3">El proceso</p>
-      <h2 class="text-3xl sm:text-4xl font-black text-center mb-14">Así de simple para inscribirte</h2>
+      <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] text-center mb-3">El proceso</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-14 text-[#0B1120] dark:text-white">Así de simple para inscribirte</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-2xl font-black text-brand-yellow mx-auto mb-4">1</div>
-          <h3 class="font-bold text-lg mb-2">Escribí al WhatsApp</h3>
-          <p class="text-gray-400 text-sm">Hacé click en cualquier botón de la página. Te responden en minutos.</p>
+          <div class="w-16 h-16 bg-[#003D7A] rounded-full flex items-center justify-center text-2xl font-black text-[#FFB800] mx-auto mb-4">1</div>
+          <h3 class="font-bold text-lg mb-2 text-[#0B1120] dark:text-white">Escribí al WhatsApp</h3>
+          <p class="text-gray-500 text-sm">Hacé click en cualquier botón. Te responden en minutos.</p>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-2xl font-black text-brand-yellow mx-auto mb-4">2</div>
-          <h3 class="font-bold text-lg mb-2">Elegí tu curso</h3>
-          <p class="text-gray-400 text-sm">Confirmá fecha y método de pago. Te mandan todos los detalles del evento.</p>
+          <div class="w-16 h-16 bg-[#003D7A] rounded-full flex items-center justify-center text-2xl font-black text-[#FFB800] mx-auto mb-4">2</div>
+          <h3 class="font-bold text-lg mb-2 text-[#0B1120] dark:text-white">Elegí tu curso</h3>
+          <p class="text-gray-500 text-sm">Confirmá fecha y método de pago. Te mandan todos los detalles.</p>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-2xl font-black text-brand-yellow mx-auto mb-4">3</div>
-          <h3 class="font-bold text-lg mb-2">Llegá y aprendé</h3>
-          <p class="text-gray-400 text-sm">Presentate el día del curso. Las herramientas y materiales están incluidos.</p>
+          <div class="w-16 h-16 bg-[#003D7A] rounded-full flex items-center justify-center text-2xl font-black text-[#FFB800] mx-auto mb-4">3</div>
+          <h3 class="font-bold text-lg mb-2 text-[#0B1120] dark:text-white">Llegá y aprendé</h3>
+          <p class="text-gray-500 text-sm">Presentate el día del curso. Herramientas y materiales incluidos.</p>
         </div>
       </div>
 
@@ -603,7 +587,7 @@
         <a
           href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
           target="_blank"
-          onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_como_funciona');"
+          onclick="fbq('track','Contact'); gtag('event','click_whatsapp_proceso');"
           class="inline-block bg-[#25D366] hover:bg-[#1fb358] text-white font-bold text-lg px-10 py-4 rounded-xl transition-colors shadow-lg"
         >
           Inscribirme ahora →
@@ -614,54 +598,38 @@
 
   <div class="gradient-line"></div>
 
-  <!-- =================== FORMULARIO LISTA DE ESPERA =================== -->
-  <section id="lista-espera" class="py-20 px-4 bg-brand-dark-3">
+  <!-- =================== FORMULARIO =================== -->
+  <section id="lista-espera" class="py-20 px-4 bg-[#F1F5F9] dark:bg-[#0D1117]">
     <div class="max-w-xl mx-auto">
-      <p class="section-tag text-center mb-3">Lista de espera</p>
-      <h2 class="text-3xl sm:text-4xl font-black text-center mb-3">Reservá tu lugar</h2>
-      <p class="text-gray-400 text-center mb-10">Dejá tu nombre y WhatsApp y te contactamos para confirmar tu inscripción antes de que se llenen los cupos.</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-[#003D7A] dark:text-[#FFB800] text-center mb-3">Lista de espera</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-3 text-[#0B1120] dark:text-white">Reservá tu lugar</h2>
+      <p class="text-gray-500 text-center mb-10">Dejá tu nombre y WhatsApp y te contactamos para confirmar tu inscripción antes de que se llenen los cupos.</p>
 
-      <!-- Form (Netlify Forms) -->
       <form
         id="waitlist-form"
         name="lista-espera-ac"
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        class="bg-brand-dark-2 border border-gray-700 rounded-2xl p-8"
+        class="bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-sm"
       >
         <input type="hidden" name="form-name" value="lista-espera-ac" />
         <input type="hidden" name="bot-field" />
 
         <div class="space-y-5">
-
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-2">Nombre completo *</label>
-            <input
-              type="text"
-              name="nombre"
-              placeholder="Tu nombre completo"
-              required
-              class="form-input"
-            />
+            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nombre completo *</label>
+            <input type="text" name="nombre" placeholder="Tu nombre completo" required class="form-input" />
           </div>
-
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-2">WhatsApp *</label>
+            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">WhatsApp *</label>
             <div class="flex gap-2">
-              <div class="form-input w-20 flex-shrink-0 text-gray-400 cursor-default">+54</div>
-              <input
-                type="tel"
-                name="whatsapp"
-                placeholder="11 1234 5678"
-                required
-                class="form-input flex-1"
-              />
+              <div class="form-input w-16 flex-shrink-0 text-gray-400 cursor-default text-center">+54</div>
+              <input type="tel" name="whatsapp" placeholder="11 1234 5678" required class="form-input flex-1" />
             </div>
           </div>
-
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-2">¿Qué curso te interesa? *</label>
+            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">¿Qué curso te interesa? *</label>
             <select name="curso" required class="form-input">
               <option value="" disabled selected>Seleccioná un curso...</option>
               <option value="Instalación AC (28 mar)">Instalación AC — Sáb 28 de marzo · $200.000 ARS</option>
@@ -671,50 +639,38 @@
               <option value="Todos los cursos">Me interesan todos</option>
             </select>
           </div>
-
           <button
             type="submit"
-            onclick="fbq('track', 'Lead'); gtag('event', 'form_submit_lista_espera');"
-            class="w-full bg-brand-yellow hover:bg-brand-yellow-dark text-brand-dark font-black text-lg py-4 rounded-xl transition-colors mt-2"
+            onclick="fbq('track','Lead'); gtag('event','form_submit_lista_espera');"
+            class="w-full bg-[#FFB800] hover:bg-[#D99E00] text-[#0B1120] font-black text-lg py-4 rounded-xl transition-colors mt-2"
           >
             Reservar mi lugar →
           </button>
-
-          <p class="text-gray-500 text-xs text-center">
-            Solo usamos tu WhatsApp para confirmar tu inscripción. Sin spam.
-          </p>
+          <p class="text-gray-400 text-xs text-center">Solo usamos tu WhatsApp para confirmar tu inscripción. Sin spam.</p>
         </div>
       </form>
 
-      <!-- Success state (shown after JS submit) -->
-      <div id="form-success" class="hidden bg-brand-dark-2 border border-green-600 rounded-2xl p-8 text-center">
+      <div id="form-success" class="hidden bg-white dark:bg-[#111827] border border-green-400 rounded-2xl p-8 text-center shadow-sm">
         <p class="text-5xl mb-4">✅</p>
-        <h3 class="text-2xl font-black mb-2 text-green-400">¡Lugar reservado!</h3>
-        <p class="text-gray-300 mb-4">En breve te contactamos por WhatsApp para confirmar los detalles de tu inscripción.</p>
+        <h3 class="text-2xl font-black mb-2 text-green-600 dark:text-green-400">¡Lugar reservado!</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">En breve te contactamos por WhatsApp para confirmar los detalles de tu inscripción.</p>
         <a
           href="https://wa.me/5491133919502?text=Hola%2C%20acabo%20de%20reservar%20mi%20lugar%20en%20el%20curso%20de%20Aire%20Acondicionado"
           target="_blank"
           class="inline-block bg-[#25D366] hover:bg-[#1fb358] text-white font-bold px-6 py-3 rounded-xl transition-colors"
         >
-          También escribir al WhatsApp ahora
+          Escribir al WhatsApp ahora
         </a>
       </div>
-
     </div>
   </section>
 
   <!-- =================== FOOTER =================== -->
-  <footer class="bg-brand-dark-3 border-t border-gray-800 py-10 px-4">
+  <footer class="bg-[#0B1120] border-t border-gray-800 py-10 px-4">
     <div class="max-w-4xl mx-auto text-center">
       <p class="font-black text-xl text-white mb-2">MDI | Manual del Independiente</p>
       <p class="text-gray-500 text-sm mb-4">Cursos técnicos presenciales · San Justo, Buenos Aires, Argentina</p>
-      <a
-        href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
-        target="_blank"
-        class="text-[#25D366] text-sm font-semibold hover:underline"
-      >
-        +54 9 11 3391 9502
-      </a>
+      <a href="https://wa.me/5491133919502" target="_blank" class="text-[#25D366] text-sm font-semibold hover:underline">+54 9 11 3391 9502</a>
       <p class="text-gray-700 text-xs mt-6">© 2026 MDI — Manual del Independiente. Todos los derechos reservados.</p>
     </div>
   </footer>
@@ -723,11 +679,11 @@
   <a
     href="https://wa.me/5491133919502?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20Aire%20Acondicionado"
     target="_blank"
-    onclick="fbq('track', 'Contact'); gtag('event', 'click_whatsapp_float');"
+    onclick="fbq('track','Contact'); gtag('event','click_whatsapp_float');"
     class="whatsapp-float"
     aria-label="Contactar por WhatsApp"
   >
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
       <path d="M15 2.5C8.1 2.5 2.5 8.1 2.5 15C2.5 17.4 3.2 19.6 4.4 21.5L2.5 27.5L8.7 25.6C10.5 26.7 12.7 27.4 15 27.4C21.9 27.4 27.5 21.8 27.5 14.9C27.5 8.1 21.9 2.5 15 2.5Z" fill="white"/>
       <path d="M20.8 18.2C20.5 18.8 19.5 19.3 18.8 19.4C18.2 19.5 17.4 19.6 15.2 18.7C12.5 17.5 10.7 14.8 10.6 14.6C10.4 14.4 9.2 12.8 9.2 11.1C9.2 9.4 10.1 8.6 10.5 8.2C10.8 7.8 11.2 7.7 11.4 7.7C11.6 7.7 11.8 7.7 12 7.7C12.2 7.7 12.5 7.6 12.8 8.3C13.1 9 13.8 10.7 13.9 10.9C14 11.1 14 11.3 13.9 11.5C13.8 11.7 13.7 11.9 13.5 12.1C13.3 12.3 13.1 12.5 12.9 12.7C12.7 12.9 12.5 13.1 12.7 13.5C12.9 13.8 13.8 15.2 15 16.3C16.6 17.7 17.9 18.1 18.3 18.3C18.6 18.5 18.9 18.4 19.1 18.2C19.4 17.9 19.8 17.4 20.2 17C20.5 16.7 20.8 16.7 21.1 16.8C21.4 16.9 23.1 17.7 23.4 17.9C23.7 18.1 23.9 18.2 24 18.3C24 18.6 24 19.6 20.8 18.2Z" fill="#25D366"/>
     </svg>
@@ -735,54 +691,58 @@
 
   <!-- =================== SCRIPTS =================== -->
   <script>
-    // Countdown timer hacia 28 de marzo 2026 a las 9:00 hs ARG (UTC-3)
-    const targetDate = new Date('2026-03-28T09:00:00-03:00');
+    // --- Theme Toggle ---
+    var htmlEl = document.documentElement;
+    var toggleBtn = document.getElementById('theme-toggle');
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
+    toggleBtn.addEventListener('click', function() {
+      var isDark = htmlEl.classList.contains('dark');
+      if (isDark) {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('mdi-theme', 'light');
+      } else {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('mdi-theme', 'dark');
+      }
+    });
 
+    // --- Countdown Timer (28 mar 2026, 09:00 hs ARG = UTC-3) ---
+    var target = new Date('2026-03-28T09:00:00-03:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      var diff = target - new Date();
       if (diff <= 0) {
-        document.getElementById('cd-days').textContent = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id) {
+          document.getElementById(id).textContent = '00';
+        });
         return;
       }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
     }
+    tick();
+    setInterval(tick, 1000);
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // Netlify Forms AJAX submit
-    const form = document.getElementById('waitlist-form');
-    const successDiv = document.getElementById('form-success');
+    // --- Netlify Forms AJAX ---
+    var form = document.getElementById('waitlist-form');
+    var successDiv = document.getElementById('form-success');
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(form);
-
       try {
         await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
+          body: new URLSearchParams(new FormData(form)).toString()
         });
         form.classList.add('hidden');
         successDiv.classList.remove('hidden');
         successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } catch (err) {
-        // Fallback: submit normally
+      } catch(err) {
         form.submit();
       }
     });
