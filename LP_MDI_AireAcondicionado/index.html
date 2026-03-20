@@ -256,12 +256,17 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
 
-    <!-- Right: FOTO GRUPAL CON DIPLOMAS -->
+    <!-- Right: VIDEO VSL -->
     <div class="flex-1 w-full max-w-lg lg:max-w-none order-1 lg:order-2">
-      <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-        <img src="grupo-diplomas-ac.jpg" alt="Alumnos MDI con diplomas de certificación en Aire Acondicionado" class="w-full h-auto" loading="lazy" />
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative w-full bg-black" style="padding-top:56.25%;">
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/r2sL9NVqXFI?rel=0&modestbranding=1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
-      <p class="text-gray-500 text-xs text-center mt-2">Alumnos certificados — Capacitación AC · MDI</p>
     </div>
 
   </div>
@@ -523,6 +528,13 @@ html { scroll-behavior: smooth; }
     </div>
 
   </div>
+
+  <!-- Foto grupal con diplomas -->
+  <div class="mt-12 rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto">
+    <img src="grupo-diplomas-ac.jpg" alt="Alumnos MDI con diplomas de certificación en Aire Acondicionado" class="w-full h-auto" loading="lazy" />
+    <p class="text-gray-500 dark:text-gray-400 text-sm text-center py-3 bg-white dark:bg-[#111827]">Alumnos certificados — Capacitación AC · MDI · Laferrere</p>
+  </div>
+
 </div>
 </section>
 <div class="gradient-line"></div>
