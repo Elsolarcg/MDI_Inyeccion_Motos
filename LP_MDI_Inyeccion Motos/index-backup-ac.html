@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inyección Electrónica de Motos | MDI - Manual del Independiente</title>
+    <meta name="description"
+        content="Aprende inyección electrónica para motos desde cero. Capacitación online intensiva. Multiplica el valor de tu taller.">
+    <link rel="icon" type="image/png" href="IDENTIFICIADOR_COLOR_MDI.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans (Títulos), Inter (Cuerpo), Space Grotesk (Números/Acentos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuración Premium -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                        mono: ['"Space Grotesk"', 'monospace'],
+                    },
+                    colors: {
+                        background: '#F8FAFC',
+                        surface: '#FFFFFF',
+                        mdi: {
+                            blue: '#0F2C6E', // Azul más profundo y elegante
+                            lightBlue: '#143C8C',
+                            green: '#7CD420',
+                            dark: '#0B1120' // Slate 900 tintado
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Efecto Linterna (Spotlight) */
+        #spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(20, 60, 140, 0.03), transparent 40%);
+            transition: background 0.1s ease;
+            will-change: background;
+        }
+
+        /* Texturas Sutiles */
+        .bg-grid {
+            background-image: radial-gradient(rgba(15, 44, 110, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Glassmorphism High-End */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .glass-dark {
+            background: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 44, 110, 0.06);
+            box-shadow: 0 10px 30px -10px rgba(15, 44, 110, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(15, 44, 110, 0.15);
+            box-shadow: 0 20px 40px -15px rgba(15, 44, 110, 0.1);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #143C8C;
+        }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2277921389363777');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=2277921389363777&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXRL5P8N97"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TXRL5P8N97');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "vmiflt1pdf");
+    </script>
+</head>
+
+<body class="selection:bg-mdi-blue selection:text-white">
+
+    <!-- Spotlight Effect -->
+    <div id="spotlight" style="--x: 50%; --y: 50%;"></div>
+
+    <!-- Top Banner Oferta Relámpago -->
+    <div id="top-banner"
+        class="fixed top-0 w-full z-[60] bg-red-600 text-white py-2 px-4 text-center text-[10px] sm:text-xs font-bold tracking-wide shadow-md flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 transition-transform duration-500">
+        <span class="uppercase tracking-widest">🚀 ¡OFERTA RELÁMPAGO! 50% OFF HASTA EL VIERNES 27</span>
+        <div class="flex items-center gap-1 font-mono bg-black/20 px-3 py-1 rounded-full text-white">
+            <span id="top-hours">00</span>h : <span id="top-minutes">00</span>m : <span id="top-seconds">00</span>s
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-500 bg-transparent border-b border-transparent py-4">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-heading font-bold text-sm shadow-lg">
+                    MDI</div>
+                <span class="font-heading font-bold text-lg text-mdi-blue hidden sm:block tracking-tight">Manual del
+                    <span class="text-mdi-green">Independiente</span></span>
+            </div>
+
+            <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })"
+                class="flex items-center gap-2 text-xs font-bold text-mdi-blue hover:text-white transition-all group bg-white/80 hover:bg-mdi-blue px-5 py-2.5 rounded-full border border-mdi-blue/20 shadow-sm backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span class="tracking-widest uppercase">Cupos Abiertos</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Split Design High-Ticket) -->
+    <header class="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-grid">
+        <!-- Abstract Decoration -->
+        <div
+            class="absolute top-20 right-0 w-[500px] h-[500px] bg-mdi-lightBlue/5 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                <!-- Hero Text -->
+                <div class="reveal active order-2 lg:order-1">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 mb-6 shadow-sm">
+                        <i data-lucide="zap" class="w-4 h-4 text-mdi-green"></i>
+                        <span class="text-slate-600 text-xs font-bold uppercase tracking-widest font-mono">Próxima
+                            Edición: En Vivo por Zoom</span>
+                    </div>
+
+                    <h1
+                        class="font-heading text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-slate-900 mb-6">
+                        Convertite en el <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-mdi-blue to-blue-600">Messi de
+                            la Inyección.</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg font-medium">
+                        Capacitación intensiva de 2 días. Dejá de rebotar laburos por miedo a la electrónica, empezá a
+                        diagnosticar motos modernas con seguridad y multiplicá la plata de tu taller.
+                    </p>
+
+                    <div class="flex flex-col gap-4 w-full sm:max-w-md">
+                        <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })"
+                            class="px-8 py-4 bg-mdi-blue hover:bg-mdi-dark text-white font-heading font-bold rounded-xl transition-all shadow-[0_10px_30px_rgba(20,60,140,0.2)] hover:shadow-[0_15px_40px_rgba(20,60,140,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3 group w-full">
+                            Aprovechar 50% OFF
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                    <div
+                        class="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 font-bold uppercase tracking-widest">
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle-2"
+                                class="w-4 h-4 text-mdi-green"></i> Desde Cero</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle-2"
+                                class="w-4 h-4 text-mdi-green"></i> Replay 30 Días</span>
+                    </div>
+                </div>
+
+                <!-- Hero Visual / VSL Placeholder -->
+                <div class="reveal active delay-100 order-1 lg:order-2 relative">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-mdi-blue to-mdi-green opacity-10 blur-2xl rounded-[3rem]">
+                    </div>
+                    <div class="glass-card p-3 rounded-[2rem] relative z-10 shadow-2xl">
+                        <div class="relative w-full overflow-hidden rounded-3xl bg-slate-900"
+                            style="padding-top: 100%; /* Cuadrado para impacto visual */">
+                            <iframe
+                                class="absolute top-0 left-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+                                src="https://www.youtube.com/embed/OF0cg5u-eRQ?si=tby8YwtReurLaKjk&controls=1&modestbranding=1"
+                                title="VSL MDI" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div
+                            class="absolute -bottom-6 -left-6 glass px-6 py-4 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4 animate-float">
+                            <div
+                                class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">+100 Mecánicos</p>
+                                <p class="text-sm font-heading font-bold text-slate-900">Ya se capacitaron</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SOCIAL PROOF / TESTIMONIOS (YouTube Shorts) -->
+    <section class="py-24 bg-white relative overflow-hidden border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-mdi-blue font-mono text-xs font-bold tracking-widest uppercase mb-3 block">Casos de
+                    Éxito</span>
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-slate-900">Resultados reales. Talleres
+                    reales.</h2>
+            </div>
+
+            <!-- Grilla de 4 Shorts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+
+                <!-- Testimonio 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="relative pt-[177%] w-full bg-slate-900"> <!-- Proporción 9:16 para Shorts -->
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/v0kEm6QQVKo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-5 border-t border-slate-100">
+                        <p class="text-sm text-slate-600 italic mb-3">"Perdía plata derivando motos. Ahora hago todo el
+                            diagnóstico acá y el taller creció un montón."</p>
+                        <p class="font-heading font-bold text-sm text-slate-900">— Carlos M. <span
+                                class="text-xs font-normal text-slate-500 block">Dueño de Taller</span></p>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group delay-100">
+                    <div class="relative pt-[177%] w-full bg-slate-900">
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/vtfOJvpN0l4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-5 border-t border-slate-100">
+                        <p class="text-sm text-slate-600 italic mb-3">"Le tenía terror a quemar una ECU. Mauro explica
+                            tan claro que al otro día ya estaba midiendo sensores."</p>
+                        <p class="font-heading font-bold text-sm text-slate-900">— Javier R. <span
+                                class="text-xs font-normal text-slate-500 block">Mecánico Independiente</span></p>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group delay-200">
+                    <div class="relative pt-[177%] w-full bg-slate-900">
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/qcAgCkIo_co" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-5 border-t border-slate-100">
+                        <p class="text-sm text-slate-600 italic mb-3">"La mejor inversión. Con el primer arreglo de
+                            inyección recuperé lo que pagué por el curso."</p>
+                        <p class="font-heading font-bold text-sm text-slate-900">— Diego S. <span
+                                class="text-xs font-normal text-slate-500 block">Técnico Nivel 1</span></p>
+                    </div>
+                </div>
+
+                <!-- Testimonio 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden group delay-300">
+                    <div class="relative pt-[177%] w-full bg-slate-900">
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/MDuJYbHyJuE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-5 border-t border-slate-100">
+                        <p class="text-sm text-slate-600 italic mb-3">"Alta metodología. Pensé que por Zoom no iba a
+                            cazar una, pero las cámaras al detalle son un golazo."</p>
+                        <p class="font-heading font-bold text-sm text-slate-900">— Andrés F. <span
+                                class="text-xs font-normal text-slate-500 block">Entusiasta</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EL PROBLEMA / AGITACIÓN -->
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div
+                    class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 border border-red-200 text-red-600">
+                    <i data-lucide="alert-triangle" class="w-7 h-7"></i>
+                </div>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6 text-slate-900 leading-tight">
+                    La era del carburador <span class="text-red-500">ya fue.</span>
+                </h2>
+                <p class="text-slate-600 mb-6 text-lg leading-relaxed font-medium">
+                    Si seguís diciendo "yo no toco inyección", le estás mandando clientes en bandeja a tu competencia.
+                    El mercado ya cambió.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 mt-0.5 shrink-0"></i>
+                        <span>Cambiás piezas "a ver si se arregla", gastando guita tuya o del cliente al pedo.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-600">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 mt-0.5 shrink-0"></i>
+                        <span>Perdés laburos re rentables por miedo a quemar una computadora (ECU).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Bento Card Transformación -->
+            <div class="glass-card p-10 rounded-[2rem] relative reveal delay-100 bg-white shadow-xl">
+                <h3 class="font-heading text-xl font-bold text-mdi-blue mb-8">Con el MDI la historia es otra:</h3>
+
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Diagnóstico Certero</h4>
+                            <p class="text-sm text-slate-500">Uso avanzado de multímetro y escáner en cuestión de
+                                minutos.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Mayor Rentabilidad</h4>
+                            <p class="text-sm text-slate-500">Cobrás tarifas premium por un servicio verdaderamente
+                                especializado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA & TEMARIO (Bento Grid) -->
+    <section class="py-24 px-6 bg-white relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-slate-900 mb-4">Ingeniería para Mecánicos
+                </h2>
+                <p class="text-slate-600 text-lg">6 horas de contenido técnico. Sin rodeos. Directo al grano.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <!-- Temario 1 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-100 hover:border-mdi-blue/30 transition-all">
+                    <span class="text-5xl font-mono font-bold text-slate-100 block mb-4">01</span>
+                    <h3 class="font-heading font-bold text-xl text-mdi-blue mb-3">Lógica del Sistema</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Entendé cómo "piensa" la compu (ECU), las
+                        diferencias con el carburador y la presión de combustible.</p>
+                </div>
+                <!-- Temario 2 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-100 hover:border-mdi-blue/30 transition-all">
+                    <span class="text-5xl font-mono font-bold text-slate-100 block mb-4">02</span>
+                    <h3 class="font-heading font-bold text-xl text-mdi-blue mb-3">Sensores y Actuadores</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Identificación y prueba de TPS, MAP, IAT,
+                        Inyectores y Bobinas para descartar fallas rápido.</p>
+                </div>
+                <!-- Temario 3 -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-100 hover:border-mdi-blue/30 transition-all">
+                    <span class="text-5xl font-mono font-bold text-slate-100 block mb-4">03</span>
+                    <h3 class="font-heading font-bold text-xl text-mdi-blue mb-3">Herramientas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Masterclass de Multímetro (tu mejor aliado) y
+                        fundamentos del uso de escáner en motos modernas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE EXPERIENCIA -->
+    <section class="py-24 px-6 bg-slate-900 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span
+                        class="text-mdi-green font-mono text-xs font-bold tracking-widest uppercase mb-3 block">Nuestra
+                        Comunidad</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Así se vive la capacitación</h2>
+                </div>
+            </div>
+
+            <!-- Galería Visual (2 Imágenes Proporcionadas) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal delay-100">
+                <div class="rounded-2xl overflow-hidden relative group shadow-xl bg-slate-800">
+                    <img src="DSC_0026.jpg" alt="Capacitación práctica MDI"
+                        class="w-full h-auto md:h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-heading font-bold text-lg drop-shadow-md">Clases al detalle</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative group shadow-xl bg-slate-800">
+                    <img src="20251130_190109.jpg" alt="Comunidad de mecánicos MDI"
+                        class="w-full h-auto md:h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-heading font-bold text-lg drop-shadow-md">Nuestra Comunidad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EL EQUIPO -->
+    <section class="py-24 px-6 bg-white border-b border-slate-100">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-heading text-3xl font-bold text-center text-slate-900 mb-16 reveal">Tus Instructores</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 reveal delay-100">
+                <!-- Instructor 1 -->
+                <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                    <div
+                        class="w-32 h-32 rounded-full overflow-hidden bg-slate-100 shrink-0 border-4 border-slate-50 shadow-lg">
+                        <img src="Foto Miguel M .jpg" alt="Miguel Martínez"
+                            class="w-full h-full object-cover object-[50%_25%]"
+                            onerror="this.src='https://placehold.co/400x400/143C8C/FFFFFF?text=MM'">
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-xl font-bold text-mdi-blue">Miguel Martínez</h3>
+                        <p class="text-xs font-bold text-mdi-green uppercase tracking-widest mb-3">Fundador MDI</p>
+                        <p class="text-sm text-slate-600">Empresario enfocado en la profesionalización del sector. Su
+                            misión es darte las herramientas para hacer crecer tu taller como un negocio real.</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 2 -->
+                <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                    <div
+                        class="w-32 h-32 rounded-full overflow-hidden bg-slate-100 shrink-0 border-4 border-slate-50 shadow-lg">
+                        <img src="Mauro_MDI.jpg" alt="Mauro Nicolas Brangeri"
+                            class="w-full h-full object-cover object-[33%_20%]"
+                            onerror="this.src='https://placehold.co/400x400/7CD420/FFFFFF?text=MB'">
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-xl font-bold text-mdi-blue">Mauro Brangeri</h3>
+                        <p class="text-xs font-bold text-mdi-green uppercase tracking-widest mb-3">Mecánico Especialista
+                        </p>
+                        <p class="text-sm text-slate-600">El experto técnico. Años de experiencia resolviendo fallas
+                            complejas. Te va a enseñar en un idioma súper claro, de mecánico a mecánico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA IRRESISTIBLE & CHECKOUT (HIGH-TICKET DARK MODE) -->
+    <section id="oferta" class="py-24 px-6 bg-mdi-dark text-white relative overflow-hidden">
+        <!-- Abstract Glows -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="glass-dark border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl reveal">
+
+                <div class="text-center mb-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 mb-6 font-bold text-xs uppercase tracking-widest">
+                        <i data-lucide="timer" class="w-4 h-4"></i> Oferta válida solo hasta el Viernes 27 de Febrero
+                    </div>
+                    <h2 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Asegurá tu lugar hoy</h2>
+                    <p class="text-slate-400 text-lg">Inmersión total en Inyección Electrónica. 2 días. 6 horas en vivo.
+                    </p>
+                </div>
+
+                <!-- Cuenta Regresiva Adaptable para Móviles -->
+                <div class="flex justify-center items-center gap-2 sm:gap-4 md:gap-8 mb-12">
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-slate-800/80 rounded-xl sm:rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
+                            <span id="days"
+                                class="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-white">00</span>
+                        </div>
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400 mt-2 font-bold">Días</span>
+                    </div>
+                    <div class="text-xl sm:text-3xl font-bold text-slate-600 mb-5 sm:mb-6">:</div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-slate-800/80 rounded-xl sm:rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
+                            <span id="hours"
+                                class="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-white">00</span>
+                        </div>
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400 mt-2 font-bold">Horas</span>
+                    </div>
+                    <div class="text-xl sm:text-3xl font-bold text-slate-600 mb-5 sm:mb-6">:</div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-slate-800/80 rounded-xl sm:rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
+                            <span id="minutes"
+                                class="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-white">00</span>
+                        </div>
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400 mt-2 font-bold">Mins</span>
+                    </div>
+                    <div class="text-xl sm:text-3xl font-bold text-slate-600 mb-5 sm:mb-6">:</div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-slate-800/80 rounded-xl sm:rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
+                            <span id="seconds"
+                                class="font-mono text-2xl sm:text-3xl md:text-4xl font-bold text-red-400">00</span>
+                        </div>
+                        <span
+                            class="text-[9px] sm:text-[10px] uppercase tracking-widest text-red-400 mt-2 font-bold">Segs</span>
+                    </div>
+                </div>
+
+                <!-- Pricing Box -->
+                <div
+                    class="bg-slate-900/50 rounded-3xl p-8 border border-slate-700/50 text-center mb-8 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 bg-mdi-green text-mdi-dark text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-widest">
+                        50% OFF
+                    </div>
+                    <p class="text-slate-400 font-medium mb-2">Valor regular: <span
+                            class="line-through decoration-red-500">$90.000 ARS</span></p>
+                    <div class="flex justify-center items-end gap-2 mb-2">
+                        <span class="font-mono text-5xl md:text-7xl font-bold text-white">$45.000</span>
+                        <span class="text-xl text-slate-400 pb-2">ARS</span>
+                    </div>
+                    <p class="text-sm text-mdi-green font-bold">Único pago. Acceso a las clases en vivo + 30 días de
+                        replay + Certificado.</p>
+                </div>
+
+                <!-- Checkout Button -->
+                <a href="https://mpago.la/2ZcmHXM" target="_blank" onclick="fbq('track', 'InitiateCheckout')"
+                    class="block w-full text-center py-5 bg-blue-600 hover:bg-blue-500 text-white font-heading font-bold rounded-2xl transition-all shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-[0_0_50px_rgba(37,99,235,0.6)] hover:-translate-y-1 text-xl flex items-center justify-center gap-3">
+                    <i data-lucide="shopping-cart" class="w-6 h-6"></i> Inscribirme Ahora
+                </a>
+
+                <div class="mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-2 text-slate-400 text-xs font-mono uppercase tracking-widest">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> Pago seguro vía MercadoPago
+                    </div>
+                    <a href="https://wa.me/5491133919502?text=Hola%2C%20vengo%20por%20el%20curso%20de%20Inyecci%C3%B3n%20de%20Motos" target="_blank" onclick="fbq('track', 'Contact')"
+                        class="flex items-center gap-2 text-sm text-[#25D366] hover:text-white transition-colors font-bold">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> Dudas por WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-heading text-3xl font-bold mb-12 text-center text-slate-900 reveal">Preguntas Frecuentes
+            </h2>
+
+            <div class="space-y-4 reveal delay-100">
+                <div
+                    class="group border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all hover:border-mdi-blue/30 shadow-sm">
+                    <button
+                        class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-slate-800 focus:outline-none">
+                        ¿Necesito conocimientos previos de inyección?
+                        <i data-lucide="chevron-down"
+                            class="chevron-down w-5 h-5 text-mdi-blue transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="faq-content hidden p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                        <div class="pt-4">No de inyección, pero sí nociones básicas de mecánica de motos (motor 4
+                            tiempos). Vamos a ver todos los conceptos electrónicos desde cero.</div>
+                    </div>
+                </div>
+
+                <div
+                    class="group border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all hover:border-mdi-blue/30 shadow-sm">
+                    <button
+                        class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-slate-800 focus:outline-none">
+                        ¿Qué herramientas necesito tener antes de empezar?
+                        <i data-lucide="chevron-down"
+                            class="chevron-down w-5 h-5 text-mdi-blue transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="faq-content hidden p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                        <div class="pt-4">Para el curso, solo tu compu o el celu. Después te vamos a enseñar qué
+                            multímetro básico comprar (no necesitás uno caro para empezar).</div>
+                    </div>
+                </div>
+
+                <div
+                    class="group border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all hover:border-mdi-blue/30 shadow-sm">
+                    <button
+                        class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-slate-800 focus:outline-none">
+                        ¿Qué pasa si me pierdo una clase en vivo?
+                        <i data-lucide="chevron-down"
+                            class="chevron-down w-5 h-5 text-mdi-blue transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="faq-content hidden p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                        <div class="pt-4">Todas las sesiones quedan grabadas y vas a tener acceso durante 30 días
+                            después del curso para repasar a tu ritmo.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-center mb-6">
+                <div
+                    class="w-10 h-10 bg-slate-200 text-slate-400 rounded-lg flex items-center justify-center font-heading font-bold text-sm">
+                    MDI</div>
+            </div>
+            <p class="text-sm text-slate-500 font-bold mb-2">© 2026 MDI - Manual del Independiente.</p>
+            <p class="text-xs text-slate-400">Capacitación Técnica para Motos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div id="sticky-cta"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 opacity-0 translate-y-10 transition-all duration-500 pointer-events-none w-[90%] md:w-auto">
+        <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })"
+            class="w-full md:w-auto bg-mdi-blue px-8 py-4 rounded-full text-white font-heading font-bold flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(20,60,140,0.4)] hover:scale-105 transition-all cursor-pointer border border-white/20 backdrop-blur-md">
+            <span>Asegurá tu lugar a $45.000</span>
+        </button>
+    </div>
+
+    <!-- WHATSAPP FLOATING -->
+    <a href="https://wa.me/5491133919502?text=Hola%2C%20vengo%20por%20el%20curso%20de%20Inyecci%C3%B3n%20de%20Motos" target="_blank" onclick="fbq('track', 'Contact')"
+        class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#25D366] text-white hover:bg-[#20bd5a] hover:scale-110 transition-all duration-300 shadow-[0_8px_20px_rgba(37,211,102,0.4)] cursor-pointer flex items-center justify-center group">
+        <i data-lucide="message-circle" class="w-7 h-7 fill-current"></i>
+        <!-- Tooltip -->
+        <span
+            class="absolute right-full mr-4 bg-slate-900 text-white text-xs font-bold px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">¿Dudas?
+            Escríbenos</span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // 1. Scroll Reveal Logic (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 2. Navbar & Sticky CTA Logic
+        const nav = document.getElementById('navbar');
+        const topBanner = document.getElementById('top-banner');
+        const stickyCta = document.getElementById('sticky-cta');
+        const offerSection = document.getElementById('oferta');
+
+        // Función para alinear el navbar debajo del banner
+        function updateNavPosition() {
+            if (!topBanner || !nav) return;
+            if (topBanner.classList.contains('-translate-y-full')) {
+                nav.style.top = '0px';
+            } else {
+                nav.style.top = topBanner.offsetHeight + 'px';
+            }
+        }
+
+        // Inicializar posicionamiento
+        window.addEventListener('load', updateNavPosition);
+        window.addEventListener('resize', updateNavPosition);
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const offerTop = offerSection.offsetTop;
+            const viewportBottom = scrollY + window.innerHeight;
+
+            // Ocultar el banner superior SOLO cuando nos acercamos a la sección de oferta
+            if (scrollY > offerTop - (window.innerHeight / 1.5)) {
+                if (topBanner) topBanner.classList.add('-translate-y-full');
+            } else {
+                if (topBanner) topBanner.classList.remove('-translate-y-full');
+            }
+            updateNavPosition();
+
+            // Navbar Glass effect
+            if (scrollY > 50) {
+                nav.classList.add('glass', 'shadow-sm');
+                nav.classList.remove('bg-transparent', 'border-transparent', 'py-4');
+                nav.classList.add('py-3');
+            } else {
+                nav.classList.remove('glass', 'shadow-sm', 'py-3');
+                nav.classList.add('bg-transparent', 'border-transparent', 'py-4');
+            }
+
+            // Sticky CTA Logic
+            if (scrollY > 600 && viewportBottom < offerTop + 200) {
+                stickyCta.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                stickyCta.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                stickyCta.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                stickyCta.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        });
+
+        // 3. FAQ Accordion Logic
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.chevron-down');
+
+                content.classList.toggle('hidden');
+
+                if (content.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+
+                // Close others
+                document.querySelectorAll('.faq-toggle').forEach(otherBtn => {
+                    if (otherBtn !== button) {
+                        otherBtn.nextElementSibling.classList.add('hidden');
+                        otherBtn.querySelector('.chevron-down').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+
+        // 4. Cuenta Regresiva (Target: Viernes 27 de Febrero 2026, 23:59:59 ART -03:00)
+        const countDownDate = new Date("2026-02-27T23:59:59-03:00").getTime();
+
+        const x = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Evitar números negativos
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+
+                if (document.getElementById("top-hours")) {
+                    document.getElementById("top-hours").innerHTML = "00";
+                    document.getElementById("top-minutes").innerHTML = "00";
+                    document.getElementById("top-seconds").innerHTML = "00";
+                }
+                return;
+            }
+
+            const formattedHours = hours < 10 ? "0" + hours : hours;
+            const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+            const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // Formato inferior
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = formattedHours;
+            document.getElementById("minutes").innerHTML = formattedMinutes;
+            document.getElementById("seconds").innerHTML = formattedSeconds;
+
+            // Formato barra superior (horas totales incluyendo días)
+            if (document.getElementById("top-hours")) {
+                const totalHours = (days * 24) + hours;
+                document.getElementById("top-hours").innerHTML = totalHours < 10 ? "0" + totalHours : totalHours;
+                document.getElementById("top-minutes").innerHTML = formattedMinutes;
+                document.getElementById("top-seconds").innerHTML = formattedSeconds;
+            }
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
