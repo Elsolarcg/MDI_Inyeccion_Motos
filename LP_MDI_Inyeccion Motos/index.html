@@ -297,14 +297,19 @@
                         class="absolute -inset-4 bg-gradient-to-r from-mdi-blue to-mdi-green opacity-10 blur-2xl rounded-[3rem]">
                     </div>
                     <div class="glass-card p-3 rounded-[2rem] relative z-10 shadow-2xl">
-                        <div class="relative w-full overflow-hidden rounded-3xl bg-slate-900"
-                            style="padding-top: 100%; /* Cuadrado para impacto visual */">
-                            <iframe
-                                class="absolute top-0 left-0 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-                                src="https://www.youtube.com/embed/K-_CaNU3408?si=tby8YwtReurLaKjk&controls=1&modestbranding=1"
-                                title="VSL MDI" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="relative w-full overflow-hidden rounded-3xl bg-slate-900 cursor-pointer group"
+                            style="padding-top: 100%; /* Cuadrado para impacto visual */"
+                            onclick="window.open('https://www.youtube.com/watch?v=K-_CaNU3408', '_blank')">
+                            <img src="https://img.youtube.com/vi/K-_CaNU3408/maxresdefault.jpg"
+                                alt="VSL MDI"
+                                class="absolute top-0 left-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
+                                <div class="w-20 h-20 bg-mdi-green rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Floating Badge -->
@@ -394,6 +399,15 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- CTA Button (after testimonials) -->
+            <div class="text-center mt-12 reveal">
+                <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' }); fbq('track', 'ViewContent');"
+                    class="px-8 py-4 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_15px_40px_rgba(124,212,32,0.4)] hover:shadow-[0_20px_50px_rgba(124,212,32,0.6)] hover:-translate-y-2 inline-flex items-center gap-2">
+                    Ver Ofertas de Capacitación
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -528,6 +542,15 @@
                         fundamentos del uso de escáner en motos modernas.</p>
                 </div>
             </div>
+
+            <!-- CTA Button (after curriculum) -->
+            <div class="text-center mt-12 reveal">
+                <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' }); fbq('track', 'ViewContent');"
+                    class="px-8 py-4 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_15px_40px_rgba(124,212,32,0.4)] hover:shadow-[0_20px_50px_rgba(124,212,32,0.6)] hover:-translate-y-2 inline-flex items-center gap-2">
+                    Reservar Mi Cupo Ahora
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -603,6 +626,15 @@
                             complejas. Te va a enseñar en un idioma súper claro, de mecánico a mecánico.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- CTA Button (after instructors) -->
+            <div class="text-center mt-12 reveal">
+                <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' }); fbq('track', 'ViewContent');"
+                    class="px-8 py-4 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_15px_40px_rgba(124,212,32,0.4)] hover:shadow-[0_20px_50px_rgba(124,212,32,0.6)] hover:-translate-y-2 inline-flex items-center gap-2">
+                    Acceder a la Oferta Especial
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -1204,6 +1236,18 @@
             document.getElementById("event-hours").innerHTML = formattedHours;
             document.getElementById("event-minutes").innerHTML = formattedMinutes;
         }, 1000);
+
+        // 5. STICKY CTA — Mostrar cuando scrollea > 400px
+        window.addEventListener('scroll', function () {
+            const stickyCta = document.getElementById('sticky-cta');
+            if (window.scrollY > 400) {
+                stickyCta.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                stickyCta.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                stickyCta.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                stickyCta.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        });
 
     </script>
 </body>
