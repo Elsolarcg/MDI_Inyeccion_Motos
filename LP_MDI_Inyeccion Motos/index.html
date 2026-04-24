@@ -241,7 +241,56 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Split Design High-Ticket) -->
+    <!-- NEW BANNER HERO (With Freepik Image) -->
+    <section class="relative min-h-[70vh] md:min-h-screen flex items-center justify-center pt-12 pb-12 overflow-hidden"
+        style="background: linear-gradient(135deg, rgba(11, 17, 32, 0.85) 0%, rgba(10, 22, 40, 0.85) 50%, rgba(15, 44, 110, 0.85) 100%), url('banner-hero.png') center/cover no-repeat;">
+
+        <div class="max-w-4xl mx-auto px-6 w-full relative z-10 text-center">
+            <!-- Urgencia Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 border border-red-500/50 mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                </span>
+                <span class="text-red-300 text-xs font-bold uppercase tracking-widest">Cupos limitados</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-heading text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-white mb-6">
+                Aprende Inyección <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-mdi-green to-green-400">Electrónica de Motos</span>
+            </h1>
+
+            <!-- Subheader -->
+            <p class="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto font-medium">
+                Diagnóstica desde cero • Acceso de por vida • Soporte permanente en el grupo privado
+            </p>
+
+            <!-- CTA Gigante -->
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+                <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' }); fbq('track', 'InitiateCheckout');"
+                    class="px-10 py-6 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_15px_40px_rgba(124,212,32,0.4)] hover:shadow-[0_20px_50px_rgba(124,212,32,0.6)] hover:-translate-y-2 flex items-center justify-center gap-3 group w-full md:w-auto text-lg">
+                    Acceso Ahora — Desde USD $37
+                    <i data-lucide="arrow-right"
+                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <!-- Features -->
+            <div class="flex flex-col md:flex-row justify-center gap-6 text-xs font-mono text-slate-300 font-bold uppercase tracking-widest">
+                <span class="flex items-center gap-2 justify-center md:justify-start">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-mdi-green"></i>
+                    Próximo: 2 y 3 de Mayo en Vivo
+                </span>
+                <span class="flex items-center gap-2 justify-center md:justify-start">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-mdi-green"></i>
+                    Replay 30 días
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO SECTION (Split Design High-Ticket) — KEPT FOR TESTIMONIAL FLOW -->
     <header class="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden"
         style="background: linear-gradient(135deg, #0B1120 0%, #0A1628 50%, #0F2C6E 100%);">
         <!-- Abstract Decoration -->
@@ -291,7 +340,7 @@
                     </div>
                 </div>
 
-                <!-- Hero Visual / VSL Placeholder -->
+                <!-- Hero Visual / VSL Placeholder — MOVED BELOW TESTIMONIOS -->
                 <div class="reveal active delay-100 order-1 lg:order-2 relative">
                     <div
                         class="absolute -inset-4 bg-gradient-to-r from-mdi-blue to-mdi-green opacity-10 blur-2xl rounded-[3rem]">
@@ -846,9 +895,9 @@
                     <div class="bg-slate-900/50 rounded-2xl p-6 mb-8 border border-slate-700/50">
                         <p class="text-slate-400 text-sm mb-2">Precio:</p>
                         <div class="flex items-end gap-3 mb-4">
-                            <span class="text-3xl md:text-4xl font-bold text-white">USD $15</span>
+                            <span class="text-3xl md:text-4xl font-bold text-white">USD $37</span>
                         </div>
-                        <p class="text-xs text-slate-400">~ <span class="text-mdi-green font-bold">$17.000 ARS</span> (aprox.)</p>
+                        <p class="text-xs text-slate-400">~ <span class="text-mdi-green font-bold">$42.000 ARS</span> (aprox.)</p>
                     </div>
 
                     <!-- Beneficios -->
@@ -1058,7 +1107,7 @@
         class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 opacity-0 translate-y-10 transition-all duration-500 pointer-events-none w-[90%] md:w-auto">
         <button onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })"
             class="w-full md:w-auto bg-mdi-green px-8 py-4 rounded-full text-mdi-dark font-heading font-bold flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(124,212,32,0.4)] hover:scale-105 transition-all cursor-pointer border border-white/20 backdrop-blur-md">
-            <span>Ver Ofertas • Desde USD $15</span>
+            <span>Ver Ofertas • Desde USD $37</span>
         </button>
     </div>
 
