@@ -48,16 +48,16 @@
 
 ## Traceability
 
-| Requirement | Fase | Status |
-|-------------|------|--------|
-| TRACK-01 | Fase 1 | Pending |
-| TRACK-02 | Fase 1 | Pending |
-| TRACK-03 | Fase 1 | Pending |
-| ADS-01 | Fase 2 | Pending |
-| ADS-02 | Fase 2 | Pending |
-| ADS-03 | Fase 2 | Pending |
-| ADS-04 | Fase 2 | Pending |
-| LOW-01 | Fase 3 | Pending |
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| TRACK-01 | Phase 1 — Fundamentos de Tracking | Pending |
+| TRACK-02 | Phase 1 — Fundamentos de Tracking | Pending |
+| TRACK-03 | Phase 1 — Fundamentos de Tracking | Pending |
+| ADS-01 | Phase 2 — Meta Ads Relanzamiento | Pending |
+| ADS-02 | Phase 2 — Meta Ads Relanzamiento | Pending |
+| ADS-03 | Phase 2 — Meta Ads Relanzamiento | Pending |
+| ADS-04 | Phase 2 — Meta Ads Relanzamiento | Pending |
+| LOW-01 | Phase 3 — Lowticket Funnel | Pending |
 
 **Coverage:**
 - v1 requirements: 8 total
@@ -66,4 +66,4 @@
 
 ---
 *Requirements defined: 2026-04-25*
-*Last updated: 2026-04-25 after initial definition*
+*Last updated: 2026-04-25 — traceability updated after roadmap creation*
