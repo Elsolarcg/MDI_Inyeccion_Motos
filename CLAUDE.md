@@ -31,6 +31,28 @@ Instalado directamente en los 3 HTML. Eventos en `index.html`:
 ## MercadoPago checkout
 - `https://mpago.la/2ZcmHXM`
 
+## Hotmart API — MDI
+- **Credenciales:** `05_EL_SOLAR/.env` → `HOTMART_MDI_CLIENT_ID`, `HOTMART_MDI_CLIENT_SECRET`, `HOTMART_MDI_BASIC`
+- **Token endpoint:** `POST https://api-sec-vlc.hotmart.com/security/oauth/token?grant_type=client_credentials`
+- **Auth header:** `Authorization: $HOTMART_MDI_BASIC`
+- **Token TTL:** ~48h (regenerar si hay 401)
+- **Productos en Hotmart:**
+  - Virtual en vivo (2-3 mayo): `https://pay.hotmart.com/H105380102G?bid=1776180424703`
+  - Pregrabado: `https://hotmart.com/es/marketplace/productos/clase-de-inyeccion-de-motos-pre-grabado/O105383269C`
+  - Ebook: publicado (link pendiente de confirmar)
+- **Ventas consultables:** `GET https://developers.hotmart.com/payments/api/v1/sales/history`
+
+## Creativos Meta Ads — reutilizables
+Estos video IDs tuvieron CTR >5.7% en campañas previas. Usar en nuevas campañas:
+- Video 1 ("Ganas poco como mecánico?"): `1430736985403167`
+- Video 2 ("Domina la especialidad que todos buscan"): `1987879962608217`
+- Video 3 ("Genera ingresos como especialista"): `1468901108356276`
+
+## GSD Planning
+- **Roadmap:** `.planning/ROADMAP.md` — 3 fases
+- **Estado:** `.planning/STATE.md` — Phase 1 activa
+- **Próximo paso:** `/gsd-plan-phase 1` (Fundamentos de Tracking)
+
 ## Flujo de edición
 1. Editar archivos en `LP_MDI_Inyeccion Motos/`
 2. `git add`, `git commit`, `git push origin main`
