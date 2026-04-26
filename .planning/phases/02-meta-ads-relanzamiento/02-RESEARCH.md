@@ -639,22 +639,16 @@ Solo quedan [X] cupos.
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **¿Cuál es el PAGE_ID de la página de Facebook de MDI?**
-   - Qué sabemos: El token Meta está generado con acceso a la ad account de MDI.
-   - Qué está claro: Los ad creatives requieren un `page_id` obligatoriamente.
-   - Recomendación: Al inicio de la sesión de Plan 01, ejecutar `GET /me/accounts` con el token para listar las páginas accesibles y obtener el page_id correcto.
+   - RESOLVED: Obtener al inicio de Plan 01 Tarea 1 ejecutando `GET /me/accounts` con el token vigente. El PAGE_ID se guarda en 02-ASSETS.md como prerequisito bloqueante antes de crear cualquier ad creative. Plan 01 Tarea 1 incluye este paso explícitamente.
 
 2. **¿Cuánto tráfico tiene actualmente la landing en los últimos 7 días?**
-   - Qué sabemos: La campaña de tráfico anterior fue pausada el 25 de abril. Hay 0 tráfico pagado activo.
-   - Qué está claro: La audiencia warm (visitantes 7d) puede ser muy pequeña al inicio de Phase 2.
-   - Recomendación: Ampliar a 14 días si la audiencia de 7d tiene < 100 personas al crear la Custom Audience. Monitorear el "Audience Size" en Meta antes de activar el adset warm.
+   - RESOLVED: La audiencia warm se crea con `retention_seconds: 604800` (7d). Si al verificar la audiencia en Meta la población es < 100 personas, el fallback documentado en Plan 01 Tarea 2 es ampliar a `retention_seconds: 1209600` (14d) antes de crear el adset warm. El Plan 02 incluye verificación del audience size antes de activar.
 
 3. **¿Hay acceso de escritura a la cuenta de Meta para el token vigente?**
-   - Qué sabemos: El token fue generado en marzo 2026 y se usó en Phase 1 para leer datos de campañas.
-   - Qué está claro: Leer datos (GET) es diferente de crear objetos (POST). Crear campañas requiere permiso `ads_management`.
-   - Recomendación: Al iniciar Plan 01, ejecutar una llamada de prueba simple (ej. GET /act_2143097429552738?fields=name) para verificar que el token sigue válido antes de proceder con las creaciones.
+   - RESOLVED: Plan 01 Tarea 1 PASO 1 ejecuta `GET /act_2143097429552738?fields=name,account_status` como verificación de token antes de cualquier POST. Si devuelve error 190 (OAuthException), la tarea falla explícitamente con instrucción de renovar el token en developers.facebook.com. No se procede a crear nada sin confirmar acceso de escritura.
 
 ---
 

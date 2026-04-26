@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-04-25)
 
 **Core value:** Que un mecánico que ve un anuncio de MDI pueda comprar un cupo en menos de 3 clics — sin fricción, sin duda sobre el precio, y con urgencia real de que los cupos se acaban.
-**Current focus:** Phase 1 — Fundamentos de Tracking
+**Current focus:** Phase 2 — Meta Ads Relanzamiento
 
 ## Current Position
 
-Phase: 1 of 3 (Fundamentos de Tracking)
-Plan: 1 of 2 completado
-Status: In progress — esperando verificación manual de Pixel Purchase (TRACK-02)
-Last activity: 2026-04-25 — Plan 01 ejecutado y en producción (commit 3551935). Countdown corregido, UTMs aplicados. Usuario va a activar evento Purchase en Hotmart.
+Phase: 2 of 3 (Meta Ads Relanzamiento)
+Plan: 0 of 2 ejecutados (ambos planeados — listos para ejecutar)
+Status: Ready to execute — Phase 1 completada (TRACK-01 ✅, TRACK-02 ✅ confianza, TRACK-03 ✅). Phase 2 planeada: 02-01-PLAN.md + 02-02-PLAN.md.
+Last activity: 2026-04-26 — Phase 2 planeada completamente. Creativos mapeados (10 existentes + 14 nuevos). WhatsApp descartado como CTA (no retorna Purchase events a Meta). Plan checker pasado.
 
-Progress: [█████░░░░░] 50%
+Progress: [████░░░░░░] 40%
 
 ## Diagnóstico Completo (sesión 2026-04-25)
 
@@ -82,7 +82,7 @@ Reestructurada hoy (commit 7b1a39f):
 ### Blockers (Phase 1 los resuelve)
 
 - **TRACK-01 ✅ RESUELTO [2026-04-25]:** Countdown top banner y sección oferta apuntan al 2026-05-02T09:00:00-03:00. Commit 3551935. En producción.
-- **TRACK-02 🔄 EN PROGRESO:** Hotmart tiene PageView + InitiateCheckout configurados. Falta activar evento `Purchase/Compra`. Usuario lo está activando ahora. Sin este evento, OUTCOME_SALES no optimiza.
+- **TRACK-02 ✅ RESUELTO [2026-04-26]:** Pixel Purchase activado en Hotmart. Usuario confirmó configuración. Se procede con confianza a Phase 2 (OUTCOME_SALES).
 - **TRACK-03 ✅ RESUELTO [2026-04-25] (parcial):** UTMs aplicados en los 3 links de la landing (hero-cta, card-virtual, card-pregrabado). Commit 3551935. UTMs de Meta Ads se configuran en Phase 2 al crear las nuevas campañas.
 
 ### Token Meta API
@@ -99,12 +99,21 @@ Generado: 11 marzo 2026. Expiración estimada: ~10 mayo 2026. Si hay error 190 a
 
 ## Session Continuity
 
-Last session: 2026-04-25
-Stopped at: Plan 01 ejecutado (countdown + UTMs). Usuario activando evento Purchase en Hotmart para completar TRACK-02. Al volver: confirmar resultado de TRACK-02 → actualizar STATE.md → avanzar a Phase 2.
+Last session: 2026-04-26
+Stopped at: Phase 2 planeada completa. Todos los warnings del plan-checker resueltos. Listo para ejecutar Plan 01 (Wave 1: token + audiences + videos).
+
+**Decisiones de Phase 2 bloqueadas:**
+- Campaña: MDI_Motos_VL_Mayo26 | Objetivo: OUTCOME_SALES | Budget total: $30 USD/día
+- Cold $15/d: intereses motos AR, excluye CABA 50km, excluye compradores + AC audiences
+- Warm $10/d: visitantes landing 7d + Engagement FB/IG 30d → Hotmart directo
+- Hot $5/d: visitantes checkout Hotmart 7d → Hotmart directo
+- WhatsApp descartado como CTA (no retorna Purchase events a Meta)
+- A/B test cold: Var A → landing (LEARN_MORE) | Var B → Hotmart directo (BUY_NOW)
+- Videos prioritarios: cambiapiezas (cold), vivo2/vivo1/vivo4 (warm, escasez), +3 (hot)
 
 **Comando para retomar:**
 ```bash
 cd "C:/Users/USUARIO/Documents/Claude Code/05_EL_SOLAR/MDI_Inyeccion_Motos"
 cat .planning/STATE.md
-# Confirmar TRACK-02 y luego: /gsd-plan-phase 2
+# Ejecutar: /gsd-execute-phase 2 (arranca con 02-01-PLAN.md — Wave 1)
 ```
