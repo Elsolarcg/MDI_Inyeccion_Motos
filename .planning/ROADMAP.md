@@ -31,7 +31,10 @@ Sprint de 7 días (25 abril → 2-3 mayo) para convertir una landing reestructur
   2. El adset cold targetea intereses de mecánica/motos en Argentina excluyendo CABA y radio de 50km — sin overlap con audiencias de AC
   3. El adset warm tiene como audiencia a visitantes de la landing en los últimos 7 días, con URL de destino directo al checkout de Hotmart
   4. Los ads activos muestran precio en ARS como cifra primaria, fecha "2 y 3 de mayo" y mensaje de cupos limitados en headline o primer párrafo
-**Plans**: TBD
+**Plans**: 2 planes
+Plans:
+- [ ] 02-01-PLAN.md — Wave 1: Verificar token + obtener PAGE_ID + buscar interest IDs + location key CABA + crear 3 Custom Audiences + subir 5 videos
+- [ ] 02-02-PLAN.md — Wave 2: Crear campaña MDI_Motos_VL_Mayo26 + 3 adsets (Cold/Warm/Hot) + ad creatives + ads + activar con aprobación del usuario
 **UI hint**: yes
 
 ### Phase 3: Lowticket Funnel
@@ -48,5 +51,5 @@ Sprint de 7 días (25 abril → 2-3 mayo) para convertir una landing reestructur
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Fundamentos de Tracking | 0/? | Not started | - |
-| 2. Meta Ads Relanzamiento | 0/? | Not started | - |
+| 2. Meta Ads Relanzamiento | 0/2 | Planned | - |
 | 3. Lowticket Funnel | 0/? | Not started | - |
