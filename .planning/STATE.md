@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 ## Current Position
 
 Phase: 1 of 3 (Fundamentos de Tracking)
-Plan: 0 of 2 en la fase actual
-Status: Ready to execute
-Last activity: 2026-04-25 — Phase 1 planeada: 2 planes, 2 waves. Plan 01 (autonomous): countdown + UTMs en landing. Plan 02 (manual): verificación Pixel Purchase en Hotmart.
+Plan: 1 of 2 completado
+Status: In progress — esperando verificación manual de Pixel Purchase (TRACK-02)
+Last activity: 2026-04-25 — Plan 01 ejecutado y en producción (commit 3551935). Countdown corregido, UTMs aplicados. Usuario va a activar evento Purchase en Hotmart.
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█████░░░░░] 50%
 
 ## Diagnóstico Completo (sesión 2026-04-25)
 
@@ -81,9 +81,9 @@ Reestructurada hoy (commit 7b1a39f):
 
 ### Blockers (Phase 1 los resuelve)
 
-- **TRACK-01 — Countdown 00:00:00:** Destruye urgencia. Fix: actualizar JS del timer con fecha target 2026-05-02.
-- **TRACK-02 — Pixel Purchase no verificado:** Sin este evento, OUTCOME_SALES no puede optimizar. Fix: test con Pixel Helper en checkout Hotmart.
-- **TRACK-03 — Sin UTMs:** Las ventas que ocurran no van a estar atribuidas. Fix: agregar params a todos los links Hotmart.
+- **TRACK-01 ✅ RESUELTO [2026-04-25]:** Countdown top banner y sección oferta apuntan al 2026-05-02T09:00:00-03:00. Commit 3551935. En producción.
+- **TRACK-02 🔄 EN PROGRESO:** Hotmart tiene PageView + InitiateCheckout configurados. Falta activar evento `Purchase/Compra`. Usuario lo está activando ahora. Sin este evento, OUTCOME_SALES no optimiza.
+- **TRACK-03 ✅ RESUELTO [2026-04-25] (parcial):** UTMs aplicados en los 3 links de la landing (hero-cta, card-virtual, card-pregrabado). Commit 3551935. UTMs de Meta Ads se configuran en Phase 2 al crear las nuevas campañas.
 
 ### Token Meta API
 
@@ -100,11 +100,11 @@ Generado: 11 marzo 2026. Expiración estimada: ~10 mayo 2026. Si hay error 190 a
 ## Session Continuity
 
 Last session: 2026-04-25
-Stopped at: Phase 1 planeada y verificada. 2 planes listos en .planning/phases/01-fundamentos-de-tracking/. Listo para `/gsd-execute-phase 1`.
+Stopped at: Plan 01 ejecutado (countdown + UTMs). Usuario activando evento Purchase en Hotmart para completar TRACK-02. Al volver: confirmar resultado de TRACK-02 → actualizar STATE.md → avanzar a Phase 2.
 
 **Comando para retomar:**
 ```bash
 cd "C:/Users/USUARIO/Documents/Claude Code/05_EL_SOLAR/MDI_Inyeccion_Motos"
 cat .planning/STATE.md
-# Luego: /gsd-execute-phase 1
+# Confirmar TRACK-02 y luego: /gsd-plan-phase 2
 ```
