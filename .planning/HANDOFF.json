@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-25T00:00:00-05:00",
+  "phase": "1",
+  "phase_name": "Fundamentos de Tracking",
+  "phase_dir": ".planning/phases/01-fundamentos-de-tracking",
+  "plan": 2,
+  "task": 1,
+  "total_tasks": 3,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": "01/T1", "name": "Countdown top banner → mayo 2", "status": "done", "commit": "3551935"},
+    {"id": "01/T2", "name": "UTM hero-cta en landing", "status": "done", "commit": "3551935"},
+    {"id": "01/T3", "name": "UTM card-virtual en landing", "status": "done", "commit": "3551935"},
+    {"id": "01/T4", "name": "UTM card-pregrabado en landing", "status": "done", "commit": "3551935"},
+    {"id": "01/T5", "name": "Deploy git push → Netlify", "status": "done", "commit": "3551935"}
+  ],
+  "remaining_tasks": [
+    {"id": "02/T1", "name": "Verificar config Pixel Purchase en Hotmart", "status": "human_action_pending"},
+    {"id": "02/T2", "name": "Test con Pixel Helper / Meta Events Manager", "status": "not_started"},
+    {"id": "02/T3", "name": "Documentar resultado TRACK-02 en STATE.md", "status": "not_started"}
+  ],
+  "blockers": [
+    {
+      "description": "Pixel Purchase de Meta no está activado en Hotmart — solo hay PageView e InitiateCheckout",
+      "type": "human_action",
+      "workaround": "Si no se puede activar Purchase: fallback Phase 2 con OUTCOME_TRAFFIC + URL destino Hotmart directo"
+    }
+  ],
+  "human_actions_pending": [
+    {
+      "action": "En Hotmart → Ferramentas → Rastreamento → Pixels: activar evento Purchase/Compra para Pixel ID 2277921389363777",
+      "context": "Sin evento Purchase, Meta OUTCOME_SALES no puede optimizar para compradores reales. Es el blocker crítico para Phase 2.",
+      "blocking": true
+    },
+    {
+      "action": "Verificar con Meta Pixel Helper o Meta Events Manager Test Events que el evento Purchase dispara en la confirmación de Hotmart",
+      "context": "URL de test: https://www.facebook.com/events_manager2/pixel/2277921389363777/test_events/",
+      "blocking": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Promo countdown (top banner) alineado a mayo 2 en lugar de abril 29",
+      "rationale": "El banner expirado mostraría 00:00:00 durante los 3 días más críticos de venta (29 abril → 2 mayo)",
+      "phase": "1"
+    },
+    {
+      "decision": "UTM naming convention: utm_source=landing, utm_medium=web, utm_campaign=inyeccion-motos-mayo26",
+      "rationale": "Distingue tráfico orgánico desde landing vs tráfico pagado de Meta Ads (que usará utm_source=meta en Phase 2)",
+      "phase": "1"
+    },
+    {
+      "decision": "TRACK-02 determina objetivo de Phase 2: Purchase ✅ → OUTCOME_SALES | Purchase ❌ → OUTCOME_TRAFFIC fallback",
+      "rationale": "Sin señal Purchase limpia, OUTCOME_SALES no funciona. El fallback permite avanzar sin bloquear Phase 2.",
+      "phase": "1"
+    }
+  ],
+  "uncommitted_files": [],
+  "next_action": "Usuario confirma resultado de TRACK-02 (Purchase activado en Hotmart). Documentar en STATE.md y avanzar a /gsd-plan-phase 2",
+  "context_notes": "Plan 01 de Phase 1 ejecutado y en producción. El único pendiente es la verificación manual del Pixel Purchase en Hotmart (TRACK-02). Al volver: confirmar TRACK-02 → /gsd-plan-phase 2 para Meta Ads OUTCOME_SALES."
+}
