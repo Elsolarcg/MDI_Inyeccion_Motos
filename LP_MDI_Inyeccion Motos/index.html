@@ -1240,6 +1240,34 @@
             }
         });
 
+        // 6. UTM Forward — preserva atribución ad → Hotmart
+        // Si llegan UTMs de Meta en la URL, sobrescribe las UTMs hardcoded de los links de Hotmart
+        // y agrega &src=meta_<utm_content> para que Hotmart guarde la fuente en su API.
+        // Si no hay UTMs entrantes, mantiene las UTMs de landing y agrega src=landing_<posicion>.
+        (function forwardUtmsToHotmart() {
+            const incoming = new URLSearchParams(window.location.search);
+            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+            const hasIncomingMeta = incoming.get('utm_source') === 'meta';
+
+            document.querySelectorAll('a[href*="hotmart.com"]').forEach(function (a) {
+                try {
+                    const url = new URL(a.href);
+                    if (hasIncomingMeta) {
+                        utmKeys.forEach(function (k) {
+                            const v = incoming.get(k);
+                            if (v) url.searchParams.set(k, v);
+                        });
+                        const adContent = incoming.get('utm_content') || 'unknown';
+                        url.searchParams.set('src', 'meta_' + adContent);
+                    } else {
+                        const landingContent = url.searchParams.get('utm_content') || 'unknown';
+                        url.searchParams.set('src', 'landing_' + landingContent);
+                    }
+                    a.href = url.toString();
+                } catch (e) { /* ignorar links mal formados */ }
+            });
+        })();
+
     </script>
 </body>
 
