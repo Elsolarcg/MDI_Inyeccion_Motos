@@ -201,7 +201,7 @@
     <!-- Top Banner Promoción de Lanzamiento -->
     <div id="top-banner"
         class="fixed top-0 w-full z-[60] bg-red-600 text-white py-2 px-4 text-center text-[10px] sm:text-xs font-bold tracking-wide shadow-md flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 transition-transform duration-500">
-        <span class="uppercase tracking-widest">🚀 ¡PROMOCIÓN DE LANZAMIENTO! 50% OFF — Capacitación Virtual a USD $40 (antes $80)</span>
+        <span class="uppercase tracking-widest">🚀 CAPACITACIÓN VIRTUAL EN VIVO — 9 y 10 de Mayo · Cupos limitados</span>
         <div class="flex items-center gap-1 font-mono bg-black/20 px-3 py-1 rounded-full text-white text-[9px] sm:text-[10px]">
             <span id="top-days">00</span>d : <span id="top-hours">00</span>h : <span id="top-minutes">00</span>m : <span id="top-seconds">00</span>s
         </div>
@@ -268,10 +268,11 @@
 
             <!-- CTA Gigante -->
             <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
-                <a href="https://pay.hotmart.com/H105380102G?bid=1776180424703&utm_source=landing&utm_medium=web&utm_campaign=inyeccion-motos-mayo26&utm_content=hero-cta" target="_blank"
+                <a href="https://wa.me/5491133919502?text=Hola%20Miguel%2C%20vengo%20por%20la%20Capacitaci%C3%B3n%20Virtual%209-10%20mayo" target="_blank"
+                    data-wa-cta="hero-cta"
                     class="px-10 py-6 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_15px_40px_rgba(124,212,32,0.4)] hover:shadow-[0_20px_50px_rgba(124,212,32,0.6)] hover:-translate-y-2 flex items-center justify-center gap-3 group w-full md:w-auto text-lg"
-                    onclick="fbq('track', 'InitiateCheckout');">
-                    Acceso Ahora — Desde USD $37
+                    onclick="fbq('track', 'Lead');">
+                    Reservar mi cupo por WhatsApp
                     <i data-lucide="arrow-right"
                         class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -281,7 +282,7 @@
             <div class="flex flex-col md:flex-row justify-center gap-6 text-xs font-mono text-slate-300 font-bold uppercase tracking-widest">
                 <span class="flex items-center gap-2 justify-center md:justify-start">
                     <i data-lucide="check-circle-2" class="w-4 h-4 text-mdi-green"></i>
-                    Próximo: 2 y 3 de Mayo en Vivo
+                    Próximo: 9 y 10 de Mayo en Vivo
                 </span>
                 <span class="flex items-center gap-2 justify-center md:justify-start">
                     <i data-lucide="check-circle-2" class="w-4 h-4 text-mdi-green"></i>
@@ -323,7 +324,7 @@
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Elige tu formato de capacitación</h2>
-                <p class="text-slate-400 text-lg">Inmersión total en Inyección Electrónica. Inicio 2 de mayo.</p>
+                <p class="text-slate-400 text-lg">Inmersión total en Inyección Electrónica. Inicio 9 de mayo.</p>
             </div>
 
             <!-- Countdown to Event Start -->
@@ -374,9 +375,9 @@
                     <div class="bg-slate-900/50 rounded-2xl p-6 mb-8 border border-slate-700/50">
                         <p class="text-slate-400 text-sm mb-2">Precio:</p>
                         <div class="flex items-end gap-3 mb-4">
-                            <span class="text-3xl md:text-4xl font-bold text-mdi-green">$45.000 ARS</span>
+                            <span class="text-3xl md:text-4xl font-bold text-mdi-green">$65.252 ARS</span>
                         </div>
-                        <p class="text-xs text-slate-400">≈ <span class="text-white font-bold">USD $40</span> (aproximado)</p>
+                        <p class="text-xs text-slate-400">≈ <span class="text-white font-bold">USD $55</span> (aproximado)</p>
                         <p class="text-xs text-slate-300 mt-1">El precio se convierte según el tipo de cambio oficial</p>
                     </div>
 
@@ -417,10 +418,18 @@
                         </div>
                     </div>
 
-                    <!-- Checkout Button -->
-                    <a href="https://pay.hotmart.com/H105380102G?bid=1776180424703&utm_source=landing&utm_medium=web&utm_campaign=inyeccion-motos-mayo26&utm_content=card-virtual" target="_blank" onclick="fbq('track', 'InitiateCheckout')"
+                    <!-- Checkout Button — WhatsApp primary -->
+                    <a href="https://wa.me/5491133919502?text=Hola%20Miguel%2C%20quiero%20mi%20cupo%20para%20la%20Capacitaci%C3%B3n%20Virtual%209-10%20mayo" target="_blank"
+                        data-wa-cta="card-virtual"
+                        onclick="fbq('track', 'Lead')"
                         class="block w-full text-center py-5 bg-mdi-green hover:bg-green-500 text-mdi-dark font-heading font-bold rounded-xl transition-all shadow-[0_0_25px_rgba(124,212,32,0.4)] hover:shadow-[0_0_40px_rgba(124,212,32,0.6)] hover:-translate-y-2 text-lg flex items-center justify-center gap-2">
-                        <i data-lucide="shopping-cart" class="w-5 h-5"></i> Inscribirme Ahora
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> Quiero mi cupo — WhatsApp
+                    </a>
+                    <!-- Pago alternativo (autoservicio) -->
+                    <a href="https://pay.hotmart.com/H105380102G?bid=1776180424703&utm_source=landing&utm_medium=web&utm_campaign=inyeccion-motos-mayo26&utm_content=card-virtual-hotmart" target="_blank"
+                        onclick="fbq('track', 'InitiateCheckout')"
+                        class="block w-full text-center py-3 mt-3 text-sm text-slate-300 hover:text-white underline underline-offset-4 transition-colors">
+                        ¿Preferís pagar online directo? Comprar por Hotmart →
                     </a>
                 </div>
 
@@ -1008,7 +1017,7 @@
                     </button>
                     <div
                         class="faq-content hidden p-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
-                        <div class="pt-4">La capacitación en vivo (USD $40) es por Zoom con Miguel y Mauro en tiempo real — podés hacer preguntas y recibir feedback directo. Es 2 días, 3 horas por día. El curso pregrabado (USD $37) tiene el mismo contenido pero lo ves a tu ritmo, cuando quieras. Ambos incluyen certificado y grupo de soporte.</div>
+                        <div class="pt-4">La capacitación en vivo (USD $55) es por Zoom con Miguel y Mauro en tiempo real — podés hacer preguntas y recibir feedback directo. Es 2 días, 3 horas por día. El curso pregrabado (USD $37) tiene el mismo contenido pero lo ves a tu ritmo, cuando quieras. Ambos incluyen certificado y grupo de soporte.</div>
                     </div>
                 </div>
             </div>
@@ -1161,8 +1170,8 @@
             });
         });
 
-        // 4.1 Cuenta Regresiva Top Banner (Target: 29 de Abril 2026, 23:59:59 ART -03:00)
-        const promoCountDownDate = new Date("2026-05-02T09:00:00-03:00").getTime();
+        // 4.1 Cuenta Regresiva Top Banner (Target: 9 de Mayo 2026, 09:00:00 ART -03:00)
+        const promoCountDownDate = new Date("2026-05-09T09:00:00-03:00").getTime();
 
         const promoInterval = setInterval(function () {
             const now = new Date().getTime();
@@ -1199,8 +1208,8 @@
             }
         }, 1000);
 
-        // 4.2 Cuenta Regresiva Evento (Target: 2 de Mayo 2026, 09:00:00 ART -03:00)
-        const eventCountDownDate = new Date("2026-05-02T09:00:00-03:00").getTime();
+        // 4.2 Cuenta Regresiva Evento (Target: 9 de Mayo 2026, 09:00:00 ART -03:00)
+        const eventCountDownDate = new Date("2026-05-09T09:00:00-03:00").getTime();
 
         const eventInterval = setInterval(function () {
             const now = new Date().getTime();
@@ -1240,15 +1249,16 @@
             }
         });
 
-        // 6. UTM Forward — preserva atribución ad → Hotmart
-        // Si llegan UTMs de Meta en la URL, sobrescribe las UTMs hardcoded de los links de Hotmart
-        // y agrega &src=meta_<utm_content> para que Hotmart guarde la fuente en su API.
-        // Si no hay UTMs entrantes, mantiene las UTMs de landing y agrega src=landing_<posicion>.
-        (function forwardUtmsToHotmart() {
+        // 6. UTM Forward — preserva atribución ad → Hotmart + WhatsApp
+        // Hotmart: sobrescribe UTMs hardcoded con las entrantes de Meta y agrega src=meta_<utm_content>.
+        // WhatsApp (wa.me): agrega [ref:<utm_content>] al texto pre-fill para correlacionar conversación → ad.
+        (function forwardAttribution() {
             const incoming = new URLSearchParams(window.location.search);
             const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
             const hasIncomingMeta = incoming.get('utm_source') === 'meta';
+            const adContent = incoming.get('utm_content') || '';
 
+            // Hotmart links — preservar lógica existente
             document.querySelectorAll('a[href*="hotmart.com"]').forEach(function (a) {
                 try {
                     const url = new URL(a.href);
@@ -1257,8 +1267,7 @@
                             const v = incoming.get(k);
                             if (v) url.searchParams.set(k, v);
                         });
-                        const adContent = incoming.get('utm_content') || 'unknown';
-                        url.searchParams.set('src', 'meta_' + adContent);
+                        url.searchParams.set('src', 'meta_' + (adContent || 'unknown'));
                     } else {
                         const landingContent = url.searchParams.get('utm_content') || 'unknown';
                         url.searchParams.set('src', 'landing_' + landingContent);
@@ -1266,6 +1275,21 @@
                     a.href = url.toString();
                 } catch (e) { /* ignorar links mal formados */ }
             });
+
+            // WhatsApp links — agregar [ref:<utm_content>] al texto pre-fill
+            // Solo si hay utm_content entrante (Meta ad). El footer/dudas no se contamina.
+            if (adContent) {
+                document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+                    try {
+                        const url = new URL(a.href);
+                        const text = url.searchParams.get('text') || '';
+                        if (text && !text.includes('[ref:')) {
+                            url.searchParams.set('text', text + ' [ref:' + adContent + ']');
+                            a.href = url.toString();
+                        }
+                    } catch (e) { /* ignorar links mal formados */ }
+                });
+            }
         })();
 
     </script>
