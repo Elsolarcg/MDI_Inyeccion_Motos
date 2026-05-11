@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MDI · Reporte de Cierre Feb–May 2026</title>
+<meta name="description" content="Manual del Independiente · Reporte ejecutivo de cierre del retainer Feb-May 2026 con El Solar Creative Group." />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'mdi-dark':  '#0B1120',
+          'mdi-blue':  '#0F2C6E',
+          'mdi-green': '#7CD420',
+          'mdi-amber': '#FFB800',
+          'mdi-red':   '#E11D48',
+        },
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          mono: ['JetBrains Mono','monospace'],
+          heading: ['Inter','system-ui','sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fafafa; color: #0B1120; }
+  .glass-dark { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); }
+  .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04); }
+  .kpi-card { background: linear-gradient(135deg, #0F2C6E 0%, #1e3a8a 100%); color: white; border-radius: 16px; padding: 24px; }
+  .timeline-event { border-left: 3px solid #7CD420; padding-left: 20px; padding-bottom: 24px; position: relative; }
+  .timeline-event::before { content: ''; position: absolute; left: -8px; top: 4px; width: 13px; height: 13px; background: #7CD420; border-radius: 50%; border: 3px solid white; }
+  .timeline-event.fail::before { background: #E11D48; }
+  .timeline-event.warn::before { background: #FFB800; }
+  .timeline-event.neutral::before { background: #94a3b8; }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: #0F2C6E; color: white; }
+  th { text-align: left; padding: 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 12px; border-bottom: 1px solid #e5e7eb; font-size: 14px; vertical-align: top; }
+  tbody tr:hover { background: #f9fafb; }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-success { background: #d1fae5; color: #065f46; }
+  .badge-fail { background: #fee2e2; color: #991b1b; }
+  .badge-warn { background: #fef3c7; color: #92400e; }
+  .badge-info { background: #dbeafe; color: #1e40af; }
+  .lesson-card { background: white; border-left: 4px solid #7CD420; padding: 20px; border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  details summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
+  details[open] summary { color: #0F2C6E; }
+  .nav-active { color: #0F2C6E; background: #dbeafe; }
+  @media print {
+    .no-print { display: none; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body class="bg-slate-50">
+
+<!-- ========= NAV ========= -->
+<nav class="no-print fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold text-sm">MDI</div>
+      <div class="hidden sm:block">
+        <div class="text-xs text-slate-500 font-mono uppercase tracking-widest">Reporte cierre</div>
+        <div class="text-sm font-bold text-mdi-dark">Feb–May 2026</div>
+      </div>
+    </div>
+    <div class="flex gap-1 overflow-x-auto text-xs font-semibold">
+      <a href="#resumen" class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Resumen</a>
+      <a href="#cronologia" class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Cronología</a>
+      <a href="#productos" class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Productos</a>
+      <a href="#hallazgo" class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Hallazgo</a>
+      <a href="#aprendizajes" class="hidden md:inline px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Aprendizajes</a>
+      <a href="#mercado" class="hidden md:inline px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap">Mercado</a>
+      <a href="#plan" class="px-3 py-2 rounded-lg bg-mdi-green text-mdi-dark hover:bg-green-400 whitespace-nowrap font-bold">Plan →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========= HERO ========= -->
+<section class="pt-28 pb-12 px-6 bg-gradient-to-br from-mdi-dark via-mdi-blue to-slate-900 text-white relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[600px] h-[400px] bg-mdi-green/10 blur-[120px] rounded-full pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 font-mono text-xs uppercase tracking-widest">
+      <span class="w-2 h-2 rounded-full bg-mdi-green animate-pulse"></span>
+      Cierre del retainer · 11 mayo 2026
+    </div>
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+      Manual del Independiente <br>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-mdi-green to-green-400">3 meses · 5 eventos · 1 fórmula validada</span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed">
+      El evento del 9–10 de mayo cerró con <strong class="text-mdi-green">10–11 ventas confirmadas</strong>. Esa fórmula que funcionó no fue casualidad — la encontramos en una auditoría de febrero, la replicamos exacta, y aquí está el playbook completo + el plan forward.
+    </p>
+
+    <!-- KPIs hero -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div class="kpi-card">
+        <div class="text-4xl font-extrabold mb-1">10–11</div>
+        <div class="text-xs uppercase tracking-widest opacity-80">Ventas evento 9–10 may</div>
+      </div>
+      <div class="kpi-card">
+        <div class="text-4xl font-extrabold mb-1">245</div>
+        <div class="text-xs uppercase tracking-widest opacity-80">Conversaciones WhatsApp</div>
+      </div>
+      <div class="kpi-card">
+        <div class="text-4xl font-extrabold mb-1">$0.29</div>
+        <div class="text-xs uppercase tracking-widest opacity-80">USD por conversación</div>
+      </div>
+      <div class="kpi-card">
+        <div class="text-4xl font-extrabold mb-1">88%</div>
+        <div class="text-xs uppercase tracking-widest opacity-80">First reply rate Miguel</div>
+      </div>
+    </div>
+
+    <div class="mt-10 text-sm text-slate-400 font-mono">
+      Para: Miguel Ángel Martínez · De: El Solar Creative Group · Período: Febrero – Mayo 2026
+    </div>
+  </div>
+</section>
+
+<!-- ========= 1. RESUMEN ========= -->
+<section id="resumen" class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-8">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">01 · Resumen ejecutivo</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">El fin de semana que validó tres meses de trabajo</h2>
+      <p class="text-lg text-slate-600 max-w-4xl leading-relaxed">
+        El sábado 9 y domingo 10 de mayo corrimos la <strong>Capacitación Virtual EN VIVO de Inyección de Motos</strong> con la fórmula que la auditoría profunda del 4 de mayo reveló como ganadora histórica. <strong class="text-mdi-blue">10–11 ventas cerradas</strong>, casi todas por WhatsApp con cierre manual de Miguel — exactamente como funcionó en febrero. Pero el camino para llegar acá tuvo iteraciones, errores corregidos, y aprendizajes que ahora sustentan el plan forward.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
+      <div class="card">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-2">✅ Lo que validamos</div>
+        <ul class="space-y-2 text-slate-700">
+          <li class="flex gap-2"><span class="text-mdi-green">▸</span>El funnel Meta → WhatsApp cierra para esta audiencia técnica argentina (4 campañas Q1 + abril + mayo lo confirman)</li>
+          <li class="flex gap-2"><span class="text-mdi-green">▸</span>El ICP correcto se encuentra con Advantage+ Audience broad, no con "Intereses Motos"</li>
+          <li class="flex gap-2"><span class="text-mdi-green">▸</span>Hombres 25–54 = 72% del volumen (idéntico patrón en feb y mayo)</li>
+          <li class="flex gap-2"><span class="text-mdi-green">▸</span>$0.21–$0.29 por conversación WA = benchmark replicable</li>
+          <li class="flex gap-2"><span class="text-mdi-green">▸</span>Capacidad real de Miguel: 45–60 conv/día con buena calidad</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="text-xs uppercase tracking-widest text-mdi-red font-bold mb-2">❌ Lo que dejamos de hacer (porque no funcionó)</div>
+        <ul class="space-y-2 text-slate-700">
+          <li class="flex gap-2"><span class="text-mdi-red">▸</span>Funnel Meta → Hotmart bypass directo (519 IC → 1 venta = 0.19% en abril)</li>
+          <li class="flex gap-2"><span class="text-mdi-red">▸</span>Targeting "Intereses Motos" (trae hobbyistas, no compradores)</li>
+          <li class="flex gap-2"><span class="text-mdi-red">▸</span>Mezclar AC + Inyección en un solo WhatsApp (Miguel pierde contexto del lead)</li>
+          <li class="flex gap-2"><span class="text-mdi-red">▸</span>Eventos presenciales sin pre-venta validada (AC 28–29 mar fue bajo)</li>
+          <li class="flex gap-2"><span class="text-mdi-red">▸</span>Único ad creativo (frágil — un solo motor en CBO confunde a Meta)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 p-6 bg-amber-50 border-l-4 border-mdi-amber rounded-r-xl">
+      <div class="text-xs uppercase tracking-widest text-amber-800 font-bold mb-2">⚠ Reunión 8-may — lo que hay que resolver</div>
+      <p class="text-slate-700 leading-relaxed">
+        Miguel reportó <strong>44 ventas Hotmart totales en el proyecto vs meta 50–60</strong>, sintiéndose "desorientado" y con costos operativos que no se cubren (Zoom $19 + ads + comisiones). La causa raíz identificada en conjunto: <strong>la fricción de Hotmart en Argentina</strong> (requiere tarjeta USD, mientras la audiencia paga con Mercado Pago / Personal Pay / Ualá). Decisión tomada: migrar a venta directa vía MercadoPago + Google Drive, bajar precios a $5–15K ARS, y dedicar 2 semanas a reestructuración.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 2. CRONOLOGÍA ========= -->
+<section id="cronologia" class="py-16 px-6 bg-slate-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">02 · Cronología</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Los 3 meses, hito por hito</h2>
+      <p class="text-slate-600 max-w-3xl">Desde el kickoff hasta el evento del fin de semana. 11 hitos críticos.</p>
+    </div>
+
+    <div class="max-w-4xl">
+      <div class="timeline-event neutral">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">Febrero 2026</span>
+          <span class="badge badge-success">Referencia histórica</span>
+        </div>
+        <div class="font-semibold mb-1">Presencial Inyección de Motos · 150–200 leads · 4 cierres</div>
+        <p class="text-sm text-slate-600">El curso presencial original. Generó volumen real. <strong>Todos los cierres fueron por WhatsApp con vos cerrando manual</strong>. Este resultado quedó documentado en briefs pero nadie lo había sintetizado como playbook replicable hasta la auditoría del 4-may.</p>
+      </div>
+
+      <div class="timeline-event neutral">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">3 marzo</span>
+          <span class="badge badge-info">Reunión kickoff</span>
+        </div>
+        <div class="font-semibold mb-1">Estructura de ofertas marzo/abril</div>
+        <p class="text-sm text-slate-600">Reunión con Miguel + JMP + El Solar. Definición de 3 productos para marzo: AC Instalación (28-mar), AC Mantenimiento (29-mar), Seminario R32 (4-abr). Meta: 50 inscriptos por curso AC, 30–50 R32. Compromiso de implementar CRM Kommo y nuevo chip dedicado WhatsApp para Miguel.</p>
+      </div>
+
+      <div class="timeline-event fail">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">28–29 marzo</span>
+          <span class="badge badge-fail">Bajo resultado</span>
+        </div>
+        <div class="font-semibold mb-1">Eventos AC presencial (Instalación + Mantenimiento)</div>
+        <p class="text-sm text-slate-600">Cursos ejecutados a $200K ARS individual / $300K combo. <strong>Resultado muy bajo</strong> (~1 venta confirmada por curso). Causa raíz diagnosticada después: mezclar AC + Inyección en un solo WhatsApp sin separación técnica deja a Miguel sin contexto del lead.</p>
+      </div>
+
+      <div class="timeline-event neutral">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">4 abril</span>
+          <span class="badge badge-warn">Sin métrica</span>
+        </div>
+        <div class="font-semibold mb-1">Seminario Gas R32</div>
+        <p class="text-sm text-slate-600">Meta 30–50 asistentes a $45K ARS. Métricas de asistencia y ventas no capturadas formalmente en el proyecto.</p>
+      </div>
+
+      <div class="timeline-event neutral">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">21–25 abril</span>
+          <span class="badge badge-info">Optimización</span>
+        </div>
+        <div class="font-semibold mb-1">Fase 1: Reestructura landing page</div>
+        <p class="text-sm text-slate-600">Microsoft Clarity reveló 4.86% scroll depth y oferta enterrada en posición #13. Reestructura: oferta a #5, single hero, ARS primario, garantía 7 días, FBQ InitiateCheckout limpio. Commit <code class="text-xs bg-slate-200 px-1 rounded">7b1a39f</code> deployed.</p>
+      </div>
+
+      <div class="timeline-event fail">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">26 abril – 1 mayo</span>
+          <span class="badge badge-fail">Falló estructuralmente</span>
+        </div>
+        <div class="font-semibold mb-1">Relanzamiento Meta Ads → Hotmart bypass · $90/d</div>
+        <p class="text-sm text-slate-600">Campaña <code class="text-xs bg-slate-200 px-1 rounded">MDI_Motos_VL_Mayo26</code> con OUTCOME_SALES y ABO (Cold/Warm/Hot). <strong>Resultado: 519 Initiate Checkouts → 1 venta = 0.19% IC→Purchase</strong>. Benchmark sano: 5–10%. La hipótesis inicial fue "atribución rota". Lo confirmamos descartado: Pixel y tracking estaban bien — el problema era el funnel.</p>
+      </div>
+
+      <div class="timeline-event">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">2–4 mayo</span>
+          <span class="badge badge-success">Auditoría profunda</span>
+        </div>
+        <div class="font-semibold mb-1">El detective work: Auditoría Q1 vía Meta Graph API</div>
+        <p class="text-sm text-slate-600">Pulimos toda la cuenta para febrero. Descubrimos la <strong>campaña ganadora oculta</strong>: <code class="text-xs bg-slate-200 px-1 rounded">120239839413590095</code> generó <strong>633 conversaciones WA con $132 de gasto = $0.21/conv</strong>. ICP correcto: BROAD Argentina + Advantage+ Audience + 18–65. Demografía: hombres 25–54 = 80% del volumen. Pixel saludable con automatic matching de 11/11 campos.</p>
+      </div>
+
+      <div class="timeline-event">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">4 mayo (noche)</span>
+          <span class="badge badge-success">Pivote total</span>
+        </div>
+        <div class="font-semibold mb-1">Replica feb + landing nueva + Hotmart actualizado + pauta dual</div>
+        <p class="text-sm text-slate-600">Commit <code class="text-xs bg-slate-200 px-1 rounded">9a70163</code>: fechas a 9–10 mayo, precio $65.252 ARS, CTA principal a WhatsApp. Campaña CTWA con 3 ángulos creativos diversos. Hotmart actualizado por Miguel. Pauta Traffic creada en pausa como contingencia con UTMs dinámicos.</p>
+      </div>
+
+      <div class="timeline-event warn">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">8 mayo</span>
+          <span class="badge badge-warn">Reunión crítica</span>
+        </div>
+        <div class="font-semibold mb-1">Diagnóstico con Miguel: 44 ventas vs meta 50–60</div>
+        <p class="text-sm text-slate-600">Miguel reportó frustración: muchas consultas pero pocos cierres. Costos operativos no cubiertos. Identificamos juntos la fricción de Hotmart en Argentina y la decisión de migrar a venta directa Google Drive + bajar precios. <strong>Comienza la planificación de 2 semanas de reestructuración.</strong></p>
+      </div>
+
+      <div class="timeline-event">
+        <div class="flex flex-wrap gap-2 items-center mb-1">
+          <span class="font-bold text-mdi-dark">9–10 mayo</span>
+          <span class="badge badge-success">EVENTO · Winner</span>
+        </div>
+        <div class="font-semibold mb-1">Capacitación Virtual EN VIVO · 10–11 ventas</div>
+        <p class="text-sm text-slate-600">Evento ejecutado vía Zoom. La fórmula feb replicada funcionó: pauta CTWA con ICP correcto, Miguel respondiendo en WhatsApp, cierres manuales. <strong>245 conversaciones generadas en el sprint final</strong>, $0.29/conv promedio (cerca del benchmark feb $0.21).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 3. PRODUCTOS ========= -->
+<section id="productos" class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">03 · Análisis por producto</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Los 8 lanzamientos · qué funcionó y qué no</h2>
+    </div>
+
+    <div class="card overflow-x-auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Período</th>
+            <th>Formato</th>
+            <th>Precio</th>
+            <th class="text-right">Ventas</th>
+            <th>Veredicto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Presencial Inyección Motos</strong></td>
+            <td>Febrero 2026</td>
+            <td>Presencial Laferrere · 1 día</td>
+            <td>ARS</td>
+            <td class="text-right"><strong>4 cierres con seña</strong></td>
+            <td><span class="badge badge-success">Validó funnel WA</span></td>
+          </tr>
+          <tr>
+            <td><strong>Curso AC Instalación</strong></td>
+            <td>28 marzo</td>
+            <td>Presencial</td>
+            <td>$200.000 ARS</td>
+            <td class="text-right">~1</td>
+            <td><span class="badge badge-fail">Mezcla WA AC+Motos</span></td>
+          </tr>
+          <tr>
+            <td><strong>Curso AC Mantenimiento</strong></td>
+            <td>29 marzo</td>
+            <td>Presencial</td>
+            <td>$200.000 ARS</td>
+            <td class="text-right">~1</td>
+            <td><span class="badge badge-fail">Mismo problema</span></td>
+          </tr>
+          <tr>
+            <td><strong>Combo AC (Instalación + Mantenimiento)</strong></td>
+            <td>28–29 marzo</td>
+            <td>Presencial</td>
+            <td>$300.000 ARS</td>
+            <td class="text-right">~0–1</td>
+            <td><span class="badge badge-fail">Bajo</span></td>
+          </tr>
+          <tr>
+            <td><strong>Seminario Gas R32</strong></td>
+            <td>4 abril</td>
+            <td>Presencial</td>
+            <td>$45.000 ARS</td>
+            <td class="text-right">—</td>
+            <td><span class="badge badge-warn">No medido</span></td>
+          </tr>
+          <tr class="bg-rose-50">
+            <td><strong>Relanzamiento Motos (Hotmart bypass)</strong></td>
+            <td>26 abril – 1 mayo</td>
+            <td>Hotmart directo</td>
+            <td>USD $55</td>
+            <td class="text-right">1 / 519 IC</td>
+            <td><span class="badge badge-fail">0.19% IC→Purchase</span></td>
+          </tr>
+          <tr class="bg-green-50">
+            <td><strong>Capacitación Virtual EN VIVO</strong></td>
+            <td>9–10 mayo</td>
+            <td>Virtual Zoom · 2 días</td>
+            <td>$65.252 ARS / USD $55</td>
+            <td class="text-right"><strong>10–11 ✅</strong></td>
+            <td><span class="badge badge-success">Replica fórmula feb</span></td>
+          </tr>
+          <tr>
+            <td><strong>Curso Pregrabado Inyección</strong></td>
+            <td>Mayo en curso</td>
+            <td>Hotmart / Drive</td>
+            <td>USD $37 → bajar a $10</td>
+            <td class="text-right">TBD</td>
+            <td><span class="badge badge-warn">Reposicionar precio</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-8">
+      <div class="card">
+        <h3 class="font-bold text-lg mb-3 text-mdi-dark">Distribución de ventas por producto (proyecto completo)</h3>
+        <div style="height: 280px"><canvas id="chartProductos"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 class="font-bold text-lg mb-3 text-mdi-dark">Spend Meta por mes (USD)</h3>
+        <div style="height: 280px"><canvas id="chartSpend"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 4. EL HALLAZGO ========= -->
+<section id="hallazgo" class="py-16 px-6 bg-mdi-dark text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-mdi-blue/30 to-transparent pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">04 · El hallazgo crítico</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Cómo encontramos la fórmula que funcionó</h2>
+      <p class="text-slate-300 max-w-3xl text-lg">
+        El 4 de mayo, en lugar de tirar más dinero al relanzamiento abril que estaba fallando, paramos. Hicimos una auditoría exhaustiva de toda la cuenta MDI en Meta Ads vía Graph API. Lo que encontramos cambió la estrategia completa.
+      </p>
+    </div>
+
+    <!-- Comparativa campañas Q1 -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-3">⭐ La campaña winner oculta</div>
+        <div class="text-2xl font-bold mb-2">Prospección Mensajes · 17-feb</div>
+        <div class="font-mono text-xs text-slate-400 mb-4">ID 120239839413590095</div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="text-3xl font-extrabold text-mdi-green">633</div>
+            <div class="text-xs text-slate-400 uppercase">Conversaciones WA</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-mdi-green">$0.21</div>
+            <div class="text-xs text-slate-400 uppercase">Por conversación</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">$132.94</div>
+            <div class="text-xs text-slate-400 uppercase">Spend total</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">2.27%</div>
+            <div class="text-xs text-slate-400 uppercase">CTR</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-300">
+          Esta campaña existió y estaba pausada en la cuenta. Nadie la había sintetizado como playbook replicable. Su éxito venía de: objetivo Mensajes (no Ventas), destino WhatsApp (no Hotmart), targeting Advantage+ Audience broad (no intereses).
+        </p>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur border border-rose-500/30 rounded-2xl p-6">
+        <div class="text-xs uppercase tracking-widest text-rose-400 font-bold mb-3">❌ El mismo período · funnel Hotmart</div>
+        <div class="text-2xl font-bold mb-2">Prospección Ventas · 24-feb</div>
+        <div class="font-mono text-xs text-slate-400 mb-4">ID 120240155564720095</div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="text-3xl font-extrabold text-rose-400">2</div>
+            <div class="text-xs text-slate-400 uppercase">Conv WA</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-rose-400">$9.10</div>
+            <div class="text-xs text-slate-400 uppercase">Por conversación</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">$18.20</div>
+            <div class="text-xs text-slate-400 uppercase">Spend total</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">10.08%</div>
+            <div class="text-xs text-slate-400 uppercase">CTR (alto!)</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-300">
+          Mismo período, audiencia similar, pero apuntando a Hotmart. CTR altísimo (interés genuino) pero <strong>cero cierres reales</strong>. Esto es exactamente lo que vimos otra vez en abril con el relanzamiento $90/día. Patrón confirmado 4 veces.
+        </p>
+      </div>
+    </div>
+
+    <!-- ICP -->
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-2">ICP correcto</div>
+        <div class="text-lg font-bold mb-2">BROAD AR + Advantage+ Audience</div>
+        <p class="text-sm text-slate-300">Sin "Intereses Motos". Sin "Mecánicos". Meta encuentra el comprador real solo.</p>
+      </div>
+      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-2">Demografía real</div>
+        <div class="text-lg font-bold mb-2">Hombres 25–54 = 72–80% del volumen</div>
+        <p class="text-sm text-slate-300">Consistente en feb y en mayo. Mujeres = menos del 1% del cierre.</p>
+      </div>
+      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-2">Pixel saludable</div>
+        <div class="text-lg font-bold mb-2">Automatic matching 11/11</div>
+        <p class="text-sm text-slate-300">Email, teléfono, geo, todo encendido. EMQ alto. El problema nunca fue tracking.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 p-6 bg-mdi-green/10 border border-mdi-green/30 rounded-xl">
+      <div class="font-bold text-lg mb-2 text-mdi-green">El resultado de replicar exacto</div>
+      <p class="text-slate-200 leading-relaxed">
+        El 4 de mayo a la noche, clonamos la campaña feb con nuevos creatives (mismos videos winners), cambio de fechas y precio, y la activamos a $10/día. En 7 días corridos generamos <strong>245 conversaciones</strong> a $0.29/conv promedio — apenas $0.08 por encima del benchmark feb. El evento del 9–10 mayo cerró 10–11 ventas. La fórmula es replicable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 5. APRENDIZAJES ========= -->
+<section id="aprendizajes" class="py-16 px-6 bg-slate-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">05 · Aprendizajes sistémicos</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Las 5 lecciones que vamos a llevar a próximos eventos</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="lesson-card">
+        <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">Lección 1</div>
+        <h3 class="font-bold text-xl mb-3">El funnel WhatsApp cierra. Hotmart bypass no.</h3>
+        <p class="text-slate-700 leading-relaxed">Para esta audiencia (técnicos argentinos con presupuesto USD $50–60), conversar primero es no negociable. 4 evidencias confirman el patrón: 2 campañas Q1 Sales + abril + mayo. Hotmart sirve como pasarela de pago cuando el lead ya está caliente — no como funnel principal.</p>
+      </div>
+
+      <div class="lesson-card">
+        <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">Lección 2</div>
+        <h3 class="font-bold text-xl mb-3">El ICP lo encuentra Meta, no nosotros.</h3>
+        <p class="text-slate-700 leading-relaxed">"Intereses Motos" en abril nos trajo hobbyistas (fans de motos, no mecánicos compradores). Advantage+ Audience broad + Argentina 18–65 dejó que el algoritmo encontrara a hombres 25–54 con interés profesional real. <strong>Confiar en Meta = mejor ROI.</strong></p>
+      </div>
+
+      <div class="lesson-card">
+        <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">Lección 3</div>
+        <h3 class="font-bold text-xl mb-3">Diversificar creatives reduce riesgo.</h3>
+        <p class="text-slate-700 leading-relaxed">Probamos 3 ángulos: Valor/Escasez, Dolor/Independencia, Oportunidad/Mercado. El anuncio "90% mecánicos" (Oportunidad) generó <strong>141 de 167 conversaciones del sprint final (84%)</strong>. Si hubiéramos puesto solo el winner de febrero estaríamos a $0.34/conv. La diversidad permite que Meta optimice.</p>
+      </div>
+
+      <div class="lesson-card">
+        <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">Lección 4</div>
+        <h3 class="font-bold text-xl mb-3">No mezclar productos en el mismo WhatsApp.</h3>
+        <p class="text-slate-700 leading-relaxed">El diagnóstico AC del 24-mar mostró que tener AC + Inyección en un mismo inbox dejó a Miguel sin poder cerrar — perdía el contexto del lead. Cada producto necesita su propio texto de apertura en wa.me ("Hola Miguel, vengo por X") + idealmente su propio número.</p>
+      </div>
+
+      <div class="lesson-card md:col-span-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">Lección 5</div>
+        <h3 class="font-bold text-xl mb-3">Budget calibrado a la capacidad real de cierre.</h3>
+        <p class="text-slate-700 leading-relaxed">Miguel atiende cómodo ~45–60 conversaciones por día con calidad. A $0.29/conv eso son $13–18 USD/día. Si subimos a $30/día sin sumar capacidad operativa (segundo respondedor, automatización), las conversaciones extra se enfrían sin cierre. <strong>El cuello de botella ya no son los ads — es la atención humana.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 6. DIAGNÓSTICO ACTUAL ========= -->
+<section id="diagnostico" class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">06 · Diagnóstico actual</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Lo que la reunión del 8-may dejó en evidencia</h2>
+      <p class="text-slate-600 max-w-3xl">5 fricciones identificadas en conjunto con Miguel que necesitan resolución estructural — no son problemas de pauta, son del modelo de negocio.</p>
+    </div>
+
+    <div class="space-y-4">
+      <details class="card" open>
+        <summary class="font-bold text-lg text-mdi-dark">🔴 1. Fricción Hotmart en métodos de pago</summary>
+        <div class="pt-4 text-slate-700 leading-relaxed">
+          <p class="mb-3">La audiencia argentina técnica usa <strong>Mercado Pago, Personal Pay, Ualá</strong> (billeteras virtuales locales). Hotmart fuerza el pago con tarjeta de crédito y conversión a USD — fricción real que hace abandonar el checkout.</p>
+          <p class="text-sm bg-amber-50 border-l-4 border-mdi-amber p-3 rounded-r"><strong>Evidencia API:</strong> Hotmart sólo muestra <strong>2 ventas COMPLETE en todo el proyecto</strong> (30-abr y 27-abr). Las 44 ventas reportadas por Miguel + las 10–11 del evento se cobraron por canales alternativos (MercadoPago link directo, transferencia). El modelo Hotmart ya estaba siendo bypaseado en la práctica.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary class="font-bold text-lg text-mdi-dark">🔴 2. Comisiones Hotmart que comen márgen low-ticket</summary>
+        <div class="pt-4 text-slate-700 leading-relaxed">
+          <p>Hotmart cobra <strong>9.9% + USD $0.50</strong> por transacción. En un producto de USD $10, eso son ~$1.50 de comisión = 15% de pérdida. Para llegar a la meta nueva ($5K USD netos en 3 meses con 500–800 tickets), ese 15% es la diferencia entre rentable y no rentable. Alternativas con 0% comisión (Mootiva, Systeme.io) o 0.1–1.5% (MercadoPago Links nativo) son más eficientes.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary class="font-bold text-lg text-mdi-dark">🟡 3. Desinterés post-contacto inicial</summary>
+        <div class="pt-4 text-slate-700 leading-relaxed">
+          <p>Miguel reportó: "reciben consultas pero no se traducen en cierres". La data Meta confirma: 245 conv WA + 88% first reply pero solo 10–11 cierres del evento. Hipótesis: el script de cierre necesita mejora — la conversación se queda en consulta y no avanza a pago. <strong>Acción:</strong> revisar el flujo completo de WhatsApp con Miguel, agregar plantillas de seguimiento, manejo de objeciones.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary class="font-bold text-lg text-mdi-dark">🟡 4. Costos operativos no cubiertos por el modelo actual</summary>
+        <div class="pt-4 text-slate-700 leading-relaxed">
+          <p>Zoom Pro USD $19/mes + ads ~USD $30–40/semana + comisiones Hotmart + horas de Miguel = aprox <strong>USD $300–500/mes en costos</strong>. A ese ritmo el evento mensual de $55 USD necesita 6–9 ventas SOLO para cubrir costos, sin generar utilidad real. El nuevo modelo de tickets $10 USD con volumen busca cambiar esta ecuación.</p>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary class="font-bold text-lg text-mdi-dark">🟡 5. Instagram convierte menos que WhatsApp directo</summary>
+        <div class="pt-4 text-slate-700 leading-relaxed">
+          <p>Miguel mencionó: en IG le preguntan pero no cierran. Razón probable: el flujo IG → DM → cambiar a WA → cerrar tiene 1 paso más que el flujo CTWA directo (anuncio → WhatsApp pre-cargado). <strong>Acción:</strong> usar IG para contenido orgánico (lograr alcance) y derivar todo cierre comercial al CTWA de Meta + landing.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 7. MERCADO ========= -->
+<section id="mercado" class="py-16 px-6 bg-slate-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">07 · Investigación de mercado</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Dónde está parado MDI vs el mercado argentino</h2>
+      <p class="text-slate-600 max-w-3xl">4 ejes de análisis: competencia, plataformas, casos low-ticket, y tamaño de mercado. Para sustentar las decisiones forward.</p>
+    </div>
+
+    <!-- Eje A: Competencia -->
+    <div class="card mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold">A</div>
+        <h3 class="font-bold text-xl text-mdi-dark">Competencia directa · cursos mecánica motos Argentina</h3>
+      </div>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Competidor</th>
+              <th>Formato</th>
+              <th>Diferenciador</th>
+              <th>Canal venta</th>
+              <th>Posicionamiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gustavo Morea / MecanicaDeLaMoto.com</strong><br><span class="text-xs text-slate-500">Main player LATAM</span></td>
+              <td>Pack 9 cursos online · 80+ clases live</td>
+              <td>Marca personal fuerte · 10+ años trayectoria</td>
+              <td>MP + PayPal + Transferencia · WhatsApp groups</td>
+              <td><span class="badge badge-info">High-ticket bundle</span></td>
+            </tr>
+            <tr>
+              <td><strong>Instituto IME (@institutoime)</strong><br><span class="text-xs text-slate-500">37K seguidores IG</span></td>
+              <td>Presencial · 5 sedes CABA+GBA</td>
+              <td>"Pasión a profesión" · salida laboral</td>
+              <td>Presencial · WhatsApp</td>
+              <td><span class="badge badge-info">Institucional</span></td>
+            </tr>
+            <tr>
+              <td><strong>ITCA</strong></td>
+              <td>Presencial 2 años · 3.5h/sem</td>
+              <td>Título "Analista Técnico de Motores de Motos"</td>
+              <td>Presencial</td>
+              <td><span class="badge badge-info">Formación formal</span></td>
+            </tr>
+            <tr>
+              <td><strong>ISE Cursos</strong></td>
+              <td>Distancia · grabado · "Mecánica + IA"</td>
+              <td>Certificación digital · sin horarios fijos</td>
+              <td>MercadoPago cuotas · WhatsApp soporte</td>
+              <td><span class="badge badge-info">Low-mid ticket</span></td>
+            </tr>
+            <tr>
+              <td><strong>Instituto Profesional Argentino</strong></td>
+              <td>12 clases grabadas online 24/7</td>
+              <td>Plataforma virtual propia</td>
+              <td>Web propia · MercadoPago</td>
+              <td><span class="badge badge-info">Mid-ticket</span></td>
+            </tr>
+            <tr class="bg-green-50">
+              <td><strong>MDI (vos)</strong></td>
+              <td>Virtual EN VIVO + Pregrabado + Ebook</td>
+              <td><strong>Diversificación + bajo costo + Inyección específica</strong></td>
+              <td>Meta Ads → WhatsApp directo</td>
+              <td><span class="badge badge-success">Bajo costo · Volumen</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 p-4 bg-blue-50 border-l-4 border-mdi-blue rounded-r">
+        <p class="text-sm text-slate-700"><strong>Oportunidad clara:</strong> ningún competidor identificado está atacando el segmento "low-ticket Argentina con entrega Drive directa". Hay institucionales (ITCA, IME) high-ticket y bundles (Morea), pero el espacio de tickets de $5–15K ARS con entrega digital instantánea está vacío. <strong>Tu nicho específico de Inyección Electrónica</strong> también es diferenciador — la mayoría de competidores enseñan mecánica básica genérica.</p>
+      </div>
+    </div>
+
+    <!-- Eje B: Plataformas -->
+    <div class="card mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold">B</div>
+        <h3 class="font-bold text-xl text-mdi-dark">Plataformas alternativas a Hotmart · cuál conviene</h3>
+      </div>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Plataforma</th>
+              <th>Costo / Comisión</th>
+              <th>MP/Ualá/PP nativo</th>
+              <th>Entrega digital</th>
+              <th>Recomendación para MDI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hotmart</strong> (actual)</td>
+              <td>9.9% + USD $0.50</td>
+              <td>Limitado · fricción Argentina</td>
+              <td>✅ Auto</td>
+              <td><span class="badge badge-fail">Mantener solo high-ticket vivo</span></td>
+            </tr>
+            <tr class="bg-green-50">
+              <td><strong>MercadoPago Link</strong></td>
+              <td>0.1–1.5% según método pago</td>
+              <td>✅ ✅ Nativo</td>
+              <td>Manual (Drive) o Apps Script</td>
+              <td><span class="badge badge-success">Primaria para low-ticket</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tienda Nube</strong></td>
+              <td>1.5–2.5% + MP cobra aparte · gratis Argentina</td>
+              <td>✅ MP integrado</td>
+              <td>Manual (link Drive en email)</td>
+              <td><span class="badge badge-info">Si querés catálogo formal</span></td>
+            </tr>
+            <tr>
+              <td><strong>Systeme.io</strong></td>
+              <td>0% comisión transacción (plan gratis)</td>
+              <td>Vía Zapier/Webhook</td>
+              <td>✅ Membership area</td>
+              <td><span class="badge badge-info">Bundles/membresías futuras</span></td>
+            </tr>
+            <tr>
+              <td><strong>Mootiva</strong></td>
+              <td>Suscripción mensual fija</td>
+              <td>Sí · soporte LATAM</td>
+              <td>✅ Plataforma propia</td>
+              <td><span class="badge badge-info">Cuando volumen lo justifique</span></td>
+            </tr>
+            <tr>
+              <td><strong>Google Drive + Apps Script</strong></td>
+              <td>$0 (todo gratis)</td>
+              <td>Vía MP webhook</td>
+              <td>Carpeta share view-only</td>
+              <td><span class="badge badge-success">MVP inmediato</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 p-4 bg-green-50 border-l-4 border-mdi-green rounded-r">
+        <p class="text-sm text-slate-700"><strong>Recomendación:</strong> stack mínimo para arrancar venta directa = <strong>MercadoPago Link + Google Drive + Google Apps Script para email automático</strong>. Costo: $0. Comisión: 0.1–1.5%. Apto Argentina nativo. Implementable en 1–2 días.</p>
+      </div>
+    </div>
+
+    <!-- Eje C: Modelos low-ticket -->
+    <div class="card mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold">C</div>
+        <h3 class="font-bold text-xl text-mdi-dark">Modelo low-ticket validado en el mercado argentino</h3>
+      </div>
+      <p class="text-slate-700 mb-4">El caso que mencionaste en la reunión (cursos a $4K ARS por WhatsApp + Drive) está pasando en varios verticales. Patrón replicable:</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-50 rounded-xl p-5">
+          <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Paso 1</div>
+          <div class="font-bold mb-2">Anuncio Meta con CTA WhatsApp</div>
+          <p class="text-sm text-slate-600">Igual que estás haciendo. Texto del anuncio menciona precio bajo + entrega inmediata + bonus.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-5">
+          <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Paso 2</div>
+          <div class="font-bold mb-2">Respuesta automática con MP link</div>
+          <p class="text-sm text-slate-600">Mensaje pre-armado con precio, link de pago MP, y aviso de entrega automática post-pago. Si lead pregunta, Miguel responde manual. Si paga directo, sigue al paso 3.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-5">
+          <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Paso 3</div>
+          <div class="font-bold mb-2">Webhook MP → email con Drive link</div>
+          <p class="text-sm text-slate-600">Google Apps Script recibe pago aprobado, agrega email a permisos de carpeta Drive, envía link al cliente. Acceso instantáneo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eje D: Tamaño mercado -->
+    <div class="card">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold">D</div>
+        <h3 class="font-bold text-xl text-mdi-dark">Tamaño y dinámica del mercado argentino</h3>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-bold mb-2 text-mdi-dark">Datos disponibles 2026</h4>
+          <ul class="space-y-2 text-slate-700 text-sm">
+            <li>▸ <strong>FAATRA</strong> (Federación Argentina Talleres Reparación): tarifa de referencia ene-mar 2026 = <strong>$77.000+IVA por hora taller</strong></li>
+            <li>▸ <strong>ITCA</strong> reporta: mecánico con título genera ingresos iniciales de <strong>$400.000+/año</strong></li>
+            <li>▸ <strong>Mercado de herramientas mecánicas</strong> en expansión (Infobae, 5-may 2026)</li>
+            <li>▸ <strong>Inflación Argentina</strong> → menos compra de moto/auto nuevo, más reparación → más demanda de mecánicos capacitados</li>
+            <li>▸ <strong>Inyección electrónica</strong>: 90% de motos nuevas la usan (mencionado en tu anuncio winner). Mecánicos sin formación específica son la mayoría.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-2 text-mdi-dark">Oportunidades de segmento</h4>
+          <ul class="space-y-2 text-slate-700 text-sm">
+            <li>▸ <strong>Hombres 18–24</strong> (jóvenes) — en tu data CTWA representan 14% del volumen pero al precio más bajo (<strong>$0.18/conv</strong>). Subsegmento más eficiente.</li>
+            <li>▸ <strong>Interior del país</strong> — actualmente Buenos Aires concentra 35% del spend. Mendoza, Salta, Tucumán, Misiones tienen demanda y baja competencia formal.</li>
+            <li>▸ <strong>Especialidades nicho</strong> — Inyección, Diagnóstico Electrónico, Scooters, Eléctricas. Mercado no saturado.</li>
+            <li>▸ <strong>Bundles + comunidad</strong> — modelo Gustavo Morea funciona. Posible próximo paso para MDI cuando haya base low-ticket establecida.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 8. PLAN FORWARD ========= -->
+<section id="plan" class="py-16 px-6 bg-mdi-dark text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">08 · Plan forward</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">2 semanas de reestructuración · roadmap 3 meses</h2>
+      <p class="text-slate-300 max-w-3xl text-lg">
+        Meta financiera nueva: <strong class="text-mdi-green">$5.000 USD netos en 3 meses</strong> via volumen low-ticket. 500–800 ventas a USD $10 c/u. Esto es lo que vamos a ejecutar.
+      </p>
+    </div>
+
+    <!-- Semana 1 -->
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S1</div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">Semana 1 · 12–18 mayo</div>
+          <h3 class="font-bold text-2xl">Sistema venta directa + producto $10 USD funcionando</h3>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-green mb-3">🛠 El Solar</div>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>▸ Diseñar e implementar sistema MercadoPago Link → Apps Script → email automático con Drive</li>
+            <li>▸ Crear carpetas Drive con material organizado por producto (Pregrabado, Manual AC, Manual Electricidad)</li>
+            <li>▸ Pauta moderada CTWA ~$5/día apuntando al pregrabado low-ticket</li>
+            <li>▸ Plantilla de respuesta automática WhatsApp con MP link</li>
+            <li>▸ Documentar paso a paso para Miguel (manual fallback)</li>
+          </ul>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-green mb-3">👨‍🔧 Miguel</div>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>▸ Confirmar con Mauro decisión sobre clase capacitación (realizar / posponer 1 semana)</li>
+            <li>▸ Bajar precio pregrabado Hotmart a USD $10 finales (o pausarlo si pasamos todo a Drive)</li>
+            <li>▸ Comprar/conseguir material externo mecánica de motos para revender o usar como bonos</li>
+            <li>▸ Validar el sistema con compra propia end-to-end</li>
+            <li>▸ Compartir contacto de electricista colaborador (mencionado en kickoff marzo)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semana 2 -->
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S2</div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">Semana 2 · 19–25 mayo</div>
+          <h3 class="font-bold text-2xl">Landing v2 + catálogo ebooks low-ticket</h3>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-green mb-3">🛠 El Solar</div>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>▸ Rediseño landing reflejando diversidad: Motos · AC · Electricidad como pilares</li>
+            <li>▸ Sección "Tienda" con catálogo low-ticket (Manual AC $5, Manual Electricidad $5, Pregrabado Inyección $10, Bundle $20)</li>
+            <li>▸ 2–3 funnels: ebook → upsell pregrabado → upsell vivo trimestral</li>
+            <li>▸ Pauta segmentada por producto (1 ad set por vertical)</li>
+            <li>▸ Daily reviews + ajustes budget según data</li>
+          </ul>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-green mb-3">👨‍🔧 Miguel</div>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>▸ Terminar manual electricidad (50% hecho según reunión)</li>
+            <li>▸ Operar respuesta WhatsApp con plantillas + MP link</li>
+            <li>▸ Mantener cap 45–60 conv/día (avisar si saturación)</li>
+            <li>▸ Producir 2 videos orgánicos AC/Inyección/Electricidad por semana</li>
+            <li>▸ Reportar ventas Drive vs Hotmart al cierre de cada día</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mes 2-3 -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-mdi-amber text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">M2-3</div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-mdi-amber">Mes 2–3 · junio – julio</div>
+          <h3 class="font-bold text-2xl">Volumen + escalamiento + próximo evento vivo</h3>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-amber mb-2">Meta financiera</div>
+          <div class="text-3xl font-extrabold mb-2">$5K USD</div>
+          <p class="text-xs text-slate-400">netos en 3 meses · 500–800 tickets de $10 USD</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-amber mb-2">Pace requerido</div>
+          <div class="text-3xl font-extrabold mb-2">~10/día</div>
+          <p class="text-xs text-slate-400">ventas low-ticket promedio · sustentable con cap Miguel actual</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+          <div class="font-bold text-mdi-amber mb-2">Próximo evento vivo</div>
+          <div class="text-3xl font-extrabold mb-2">Jul/Ago</div>
+          <p class="text-xs text-slate-400">replica fórmula 9-10 may · al cap de 100 cupos con base low-ticket ya cultivada</p>
+        </div>
+      </div>
+
+      <div class="mt-6 p-5 bg-mdi-green/10 border border-mdi-green/30 rounded-xl">
+        <div class="font-bold text-mdi-green mb-2">Por qué este modelo es sustentable</div>
+        <p class="text-sm text-slate-200 leading-relaxed">
+          Hoy un evento vivo a $55 USD necesita 6–9 ventas mensuales solo para cubrir costos. Con ticket $10 USD, el mismo flujo de 245 conversaciones generadas en una semana convertiría 30–50 ventas (12–20% conversion en low-ticket es realista vs 5% en high-ticket por psicología de "precio bajo, decisión rápida"). Eso son $300–500 USD netos por semana, sumado a los 1–2 eventos vivos trimestrales = sostenible y escalable.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 9. SISTEMA DRIVE ========= -->
+<section id="sistema" class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">09 · Implementación venta directa</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">El sistema MercadoPago + Drive paso a paso</h2>
+      <p class="text-slate-600 max-w-3xl">Arquitectura mínima viable, costo total $0, implementable esta semana. Diseño definido + checklist de implementación.</p>
+    </div>
+
+    <!-- Diagrama -->
+    <div class="card mb-8 overflow-x-auto">
+      <h3 class="font-bold text-lg mb-4 text-mdi-dark">Flujo completo</h3>
+      <pre class="font-mono text-xs leading-relaxed text-slate-700 bg-slate-50 p-4 rounded-lg">
+┌─────────────┐   ┌──────────────────┐   ┌─────────────┐   ┌─────────────┐
+│  Anuncio    │ → │ WhatsApp con     │ → │ Cliente     │ → │  MP webhook │
+│  Meta CTWA  │   │ texto pre-cargado│   │ paga ($10)  │   │  → Apps     │
+│             │   │ + MP link auto   │   │ MercadoPago │   │  Script     │
+└─────────────┘   └──────────────────┘   └─────────────┘   └──────┬──────┘
+                                                                  ↓
+                       ┌─────────────────────────────────────────┐
+                       │  Email automático al cliente con:       │
+                       │  - Link de carpeta Google Drive         │
+                       │  - Permisos view-only por su email      │
+                       │  - Mensaje de bienvenida MDI            │
+                       └─────────────────────────────────────────┘</pre>
+    </div>
+
+    <!-- Checklist implementación -->
+    <div class="card mb-8">
+      <h3 class="font-bold text-lg mb-4 text-mdi-dark">Checklist de implementación (esta semana)</h3>
+      <ol class="space-y-3 text-slate-700">
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span><div><strong>Crear MercadoPago Link por producto.</strong> Uno por cada producto que se venda directo: Manual AC ($5), Manual Electricidad ($5), Pregrabado Inyección ($10), Bundle 3-en-1 ($20). MP Link permite cobrar sin tener tienda, solo compartir el URL.</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span><div><strong>Organizar Google Drive con material.</strong> Una carpeta por producto. Permisos por defecto = restringido. Documentar la estructura para que Miguel pueda agregar contenido nuevo.</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span><div><strong>Configurar Google Apps Script webhook.</strong> Script que reciba notificación de pago MercadoPago, extraiga email del comprador, le dé permiso de viewer a la carpeta Drive correspondiente, y envíe email con plantilla MDI.</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span><div><strong>Plantilla mensaje WhatsApp automático.</strong> Texto pre-armado que Miguel/Bolten envía al primer mensaje: "¡Hola! Soy Miguel de MDI. Te dejo el link de pago: [MP link]. Apenas pagues recibís el material por email automáticamente."</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span><div><strong>Test end-to-end.</strong> Compra propia con un email distinto. Verificar que llega el email, que el link Drive funciona, que el material es accesible.</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span><div><strong>Fallback manual documentado.</strong> Si el webhook falla, Miguel tiene una hoja con paso a paso de cómo agregar al comprador manualmente al Drive y enviar el email.</div></li>
+        <li class="flex gap-3"><span class="bg-mdi-blue text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0">7</span><div><strong>Lanzar primera pauta low-ticket.</strong> $5/día para 5 días apuntando al pregrabado a $10. Si funciona ($1.5–2 por venta proyectado), escalar a $10/día semana 2.</div></li>
+      </ol>
+    </div>
+
+    <!-- Stack -->
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="card text-center">
+        <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Costo total</div>
+        <div class="text-3xl font-extrabold text-mdi-dark">$0</div>
+        <p class="text-xs text-slate-500 mt-2">Todo en tier gratis MP + Drive + Apps Script</p>
+      </div>
+      <div class="card text-center">
+        <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Comisión por venta</div>
+        <div class="text-3xl font-extrabold text-mdi-dark">0.1–1.5%</div>
+        <p class="text-xs text-slate-500 mt-2">Solo MP · vs 15% Hotmart en producto $10</p>
+      </div>
+      <div class="card text-center">
+        <div class="text-xs uppercase tracking-widest text-mdi-blue font-bold mb-2">Tiempo de implementación</div>
+        <div class="text-3xl font-extrabold text-mdi-dark">1–2 días</div>
+        <p class="text-xs text-slate-500 mt-2">Si todo va smooth, listo para pauta semana 1</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 10. ANEXOS ========= -->
+<section id="anexos" class="py-16 px-6 bg-slate-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10">
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-blue mb-2">10 · Anexos técnicos</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-mdi-dark mb-4">Datos crudos y referencias</h2>
+    </div>
+
+    <details class="card mb-4">
+      <summary class="font-bold text-lg text-mdi-dark">IDs Meta Ads · cuentas activas</summary>
+      <div class="pt-4 font-mono text-xs space-y-1 text-slate-700">
+        <div><span class="text-slate-400">Cuenta Meta Ads:</span> act_2143097429552738</div>
+        <div><span class="text-slate-400">Pixel:</span> 2277921389363777 (Datos MDI 2026 — El Solar)</div>
+        <div><span class="text-slate-400">Página Facebook:</span> 899522349909725 (Manual del Independiente)</div>
+        <div><span class="text-slate-400">Instagram:</span> 17841475653897541</div>
+        <div><span class="text-slate-400">Campaña CTWA actual:</span> 120244099308100095 (MDI_Motos_VL_Mayo26_v2_WA)</div>
+        <div><span class="text-slate-400">Campaña Traffic activa:</span> 120244108175740095 (MDI_Motos_VL_Mayo26_v2_Traffic)</div>
+        <div><span class="text-slate-400">Campaña winner feb (referencia):</span> 120239839413590095</div>
+      </div>
+    </details>
+
+    <details class="card mb-4">
+      <summary class="font-bold text-lg text-mdi-dark">Performance acumulada Meta 4–11 mayo</summary>
+      <div class="pt-4 grid md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <div class="font-bold mb-2">CTWA (campaña principal)</div>
+          <ul class="space-y-1 text-slate-700">
+            <li>Spend: $71.04 USD</li>
+            <li>Impresiones: 87,690</li>
+            <li>Reach: 38,307 personas únicas</li>
+            <li>Frequency: 2.29</li>
+            <li>CTR: 2.13%</li>
+            <li>Link clicks: 478</li>
+            <li><strong>Conversaciones WA: 245</strong></li>
+            <li>$/conv: $0.29</li>
+            <li>First reply rate Miguel: 88%</li>
+            <li>Conv depth 5+ msgs: 63</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold mb-2">Traffic (contingencia activada 6-may)</div>
+          <ul class="space-y-1 text-slate-700">
+            <li>Spend: $31.66 USD</li>
+            <li>Impresiones: 58,885</li>
+            <li>Reach: 47,413 personas únicas</li>
+            <li>Landing Page Views: 670</li>
+            <li>UTMs dinámicos por ad/placement implementados</li>
+            <li>Audiencia "Visitantes Landing" creciendo para retargeting futuro</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="card mb-4">
+      <summary class="font-bold text-lg text-mdi-dark">Demografía consolidada CTWA</summary>
+      <div class="pt-4">
+        <div style="height: 280px"><canvas id="chartDemo"></canvas></div>
+      </div>
+    </details>
+
+    <details class="card mb-4">
+      <summary class="font-bold text-lg text-mdi-dark">Hotmart productos · IDs</summary>
+      <div class="pt-4 font-mono text-xs space-y-1 text-slate-700">
+        <div><span class="text-slate-400">Producto vivo (actual):</span> H105380102G — Capacitación Virtual EN VIVO Inyección Motos · USD $55</div>
+        <div><span class="text-slate-400">Producto pregrabado:</span> O105383269C — Curso Pregrabado · USD $37 (bajar a USD $10)</div>
+        <div><span class="text-slate-400">Ebook AC (no activado):</span> H105412676D — El Código MDI</div>
+      </div>
+    </details>
+
+    <details class="card mb-4">
+      <summary class="font-bold text-lg text-mdi-dark">Commits clave del repo landing</summary>
+      <div class="pt-4 font-mono text-xs space-y-2 text-slate-700">
+        <div><strong>7b1a39f</strong> · ~25-abr · Reestructura landing Fase 1 (oferta a #5, scroll fix)</div>
+        <div><strong>b05f671</strong> · 30-abr · JS UTM-forward para atribución ad → Hotmart</div>
+        <div><strong>9a70163</strong> · 4-may · Pivote evento 9-10 mayo · CTA WhatsApp · precio $65.252 ARS</div>
+        <div><strong>ae532f6</strong> · 4-may · Checkpoint pivote completo + auditoría Q1 documentada</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary class="font-bold text-lg text-mdi-dark">Documentos referencia internos</summary>
+      <div class="pt-4 text-sm space-y-2 text-slate-700">
+        <div>▸ <code class="bg-slate-200 px-1 rounded">.planning/phases/05-evento-9-10-mayo/05-01-AUDITORIA-Q1-Y-PIXEL.md</code> — Análisis exhaustivo Meta Q1</div>
+        <div>▸ <code class="bg-slate-200 px-1 rounded">.planning/phases/04-evento-2-3-mayo/reports/2026-05-01_review.md</code> — Daily review que detectó el problema</div>
+        <div>▸ <code class="bg-slate-200 px-1 rounded">diagnostico-mdi-ac-2026.md</code> — Diagnóstico AC marzo (causa raíz mezcla productos WhatsApp)</div>
+        <div>▸ <code class="bg-slate-200 px-1 rounded">Estructura de Ofertas para Marzo _ MDI X EL SOLAR.md</code> — Acta kickoff 3-mar</div>
+        <div>▸ <code class="bg-slate-200 px-1 rounded">reporte-cierre/data/market-research.md</code> — Investigación de mercado completa con fuentes</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer class="bg-mdi-dark text-white py-12 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-mdi-blue text-white rounded-lg flex items-center justify-center font-bold">MDI</div>
+          <div>
+            <div class="font-bold">Manual del Independiente</div>
+            <div class="text-xs text-slate-400">× El Solar Creative Group</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-400">Reporte ejecutivo de cierre del retainer · Feb–May 2026</p>
+      </div>
+      <div>
+        <div class="font-bold mb-3 text-mdi-green">¿Dudas o decisiones?</div>
+        <a href="https://wa.me/5491133919502?text=Hola%2C%20vi%20el%20reporte%20de%20cierre%20y%20quiero%20conversar" target="_blank" class="inline-flex items-center gap-2 bg-mdi-green text-mdi-dark px-5 py-2.5 rounded-lg font-bold hover:bg-green-400 transition">
+          💬 WhatsApp Juan Manuel
+        </a>
+      </div>
+      <div>
+        <div class="font-bold mb-3 text-mdi-green">Próximo paso</div>
+        <p class="text-sm text-slate-300">Confirmar decisión sobre clase de esta semana con Mauro y arrancar la Semana 1 del plan forward el lunes 12-may.</p>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-white/10 text-xs text-slate-500 font-mono text-center">
+      Generado el 11 de mayo 2026 · El Solar Creative Group · Bogotá, Colombia
+    </div>
+  </div>
+</footer>
+
+<!-- ========= CHARTS SCRIPT ========= -->
+<script>
+  // Chart 1: Distribución de ventas por producto
+  new Chart(document.getElementById('chartProductos'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Capacitación Virtual EN VIVO (9-10 may)', 'Presencial Inyección (feb)', 'AC Instalación', 'AC Mantenimiento', 'Combo AC', 'Relanzamiento Motos abril', 'Otros'],
+      datasets: [{
+        data: [10.5, 4, 1, 1, 0.5, 1, 0.5],
+        backgroundColor: ['#7CD420','#0F2C6E','#FFB800','#E11D48','#94a3b8','#475569','#cbd5e1'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } }
+    }
+  });
+
+  // Chart 2: Spend por mes
+  new Chart(document.getElementById('chartSpend'), {
+    type: 'bar',
+    data: {
+      labels: ['Feb (winner)', 'Marzo (AC)', 'Abril (relanz)', 'Mayo (pivote)'],
+      datasets: [{
+        label: 'Spend USD',
+        data: [133, 50, 144, 103],
+        backgroundColor: ['#7CD420','#94a3b8','#E11D48','#0F2C6E'],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => '$'+v } } }
+    }
+  });
+
+  // Chart 3: Demografía CTWA acumulada
+  new Chart(document.getElementById('chartDemo'), {
+    type: 'bar',
+    data: {
+      labels: ['H 18-24','H 25-34','H 35-44','H 45-54','H 55-64','H 65+','Mujeres'],
+      datasets: [{
+        label: 'Conversaciones WA',
+        data: [35, 79, 60, 40, 22, 6, 3],
+        backgroundColor: ['#7CD420','#0F2C6E','#0F2C6E','#0F2C6E','#94a3b8','#cbd5e1','#cbd5e1'],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: 'Conversaciones' } } }
+    }
+  });
+</script>
+
+</body>
+</html>
