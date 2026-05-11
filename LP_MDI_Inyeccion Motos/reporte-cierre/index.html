@@ -165,7 +165,7 @@
     <div class="mt-10 p-6 bg-amber-50 border-l-4 border-mdi-amber rounded-r-xl">
       <div class="text-xs uppercase tracking-widest text-amber-800 font-bold mb-2">⚠ Reunión 8-may — lo que hay que resolver</div>
       <p class="text-slate-700 leading-relaxed">
-        Miguel reportó <strong>44 ventas Hotmart totales en el proyecto vs meta 50–60</strong>, sintiéndose "desorientado" y con costos operativos que no se cubren (Zoom $19 + ads + comisiones). La causa raíz identificada en conjunto: <strong>la fricción de Hotmart en Argentina</strong> (requiere tarjeta USD, mientras la audiencia paga con Mercado Pago / Personal Pay / Ualá). Decisión tomada: migrar a venta directa vía MercadoPago + Google Drive, bajar precios a $5–15K ARS, y dedicar 2 semanas a reestructuración.
+        <strong>2 ventas Hotmart confirmadas en toda la trayectoria del proyecto</strong> (API consultada el 11-may). Costos operativos no se cubren con el modelo actual. La causa raíz identificada en conjunto con Miguel: <strong>la fricción de Hotmart en Argentina</strong> — requiere tarjeta USD, mientras la audiencia paga con Mercado Pago / Personal Pay / Ualá. Decisión tomada: pivote a venta directa vía MercadoPago + Google Drive, productos low-ticket $5–20 USD, y 30 días de sprint enfocado.
       </p>
     </div>
   </div>
@@ -258,8 +258,8 @@
           <span class="font-bold text-mdi-dark">8 mayo</span>
           <span class="badge badge-warn">Reunión crítica</span>
         </div>
-        <div class="font-semibold mb-1">Diagnóstico con Miguel: 44 ventas vs meta 50–60</div>
-        <p class="text-sm text-slate-600">Miguel reportó frustración: muchas consultas pero pocos cierres. Costos operativos no cubiertos. Identificamos juntos la fricción de Hotmart en Argentina y la decisión de migrar a venta directa Google Drive + bajar precios. <strong>Comienza la planificación de 2 semanas de reestructuración.</strong></p>
+        <div class="font-semibold mb-1">Diagnóstico con Miguel: 2 ventas Hotmart confirmadas en todo el proyecto</div>
+        <p class="text-sm text-slate-600">Miguel reportó frustración: muchas consultas pero pocos cierres. Costos operativos no cubiertos. Identificamos juntos la fricción de Hotmart en Argentina y la decisión de migrar a venta directa Google Drive + bajar precios. <strong>Comienza la planificación del sprint 30 días low-ticket.</strong></p>
       </div>
 
       <div class="timeline-event">
@@ -354,13 +354,19 @@
           <tr>
             <td><strong>Curso Pregrabado Inyección</strong></td>
             <td>Mayo en curso</td>
-            <td>Hotmart / Drive</td>
-            <td>USD $37 → bajar a $10</td>
+            <td>Hotmart → Drive</td>
+            <td>USD $37 → $10</td>
             <td class="text-right">TBD</td>
-            <td><span class="badge badge-warn">Reposicionar precio</span></td>
+            <td><span class="badge badge-warn">Migrar a Drive a $10</span></td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="mt-6 p-5 bg-emerald-50 border-l-4 border-mdi-green rounded-r-xl">
+      <div class="text-xs uppercase tracking-widest text-emerald-800 font-bold mb-2">▸ Próximo catálogo low-ticket (Sección 8)</div>
+      <p class="text-slate-700 leading-relaxed">
+        Los próximos 30 días el foco va a estar en 6 productos low-ticket: <strong>Manual Electricidad $5</strong>, <strong>Manual AC Eléctrico $5</strong>, <strong>Ebook Inyección Electrónica $5</strong>, <strong>Pregrabado Inyección Motos $10</strong>, <strong>Reventa Curso Scooter + bonus MDI $15</strong>, y el <strong>Bundle "El Independiente Pack 3-en-1" $20</strong>. Todos con cobro MercadoPago + entrega Drive automática. Sin eventos presenciales ni virtuales en el horizonte.
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6 mt-8">
@@ -529,7 +535,7 @@
         <summary class="font-bold text-lg text-mdi-dark">🔴 1. Fricción Hotmart en métodos de pago</summary>
         <div class="pt-4 text-slate-700 leading-relaxed">
           <p class="mb-3">La audiencia argentina técnica usa <strong>Mercado Pago, Personal Pay, Ualá</strong> (billeteras virtuales locales). Hotmart fuerza el pago con tarjeta de crédito y conversión a USD — fricción real que hace abandonar el checkout.</p>
-          <p class="text-sm bg-amber-50 border-l-4 border-mdi-amber p-3 rounded-r"><strong>Evidencia API:</strong> Hotmart sólo muestra <strong>2 ventas COMPLETE en todo el proyecto</strong> (30-abr y 27-abr). Las 44 ventas reportadas por Miguel + las 10–11 del evento se cobraron por canales alternativos (MercadoPago link directo, transferencia). El modelo Hotmart ya estaba siendo bypaseado en la práctica.</p>
+          <p class="text-sm bg-amber-50 border-l-4 border-mdi-amber p-3 rounded-r"><strong>Evidencia API consultada 11-may:</strong> Hotmart muestra <strong>2 ventas COMPLETE en toda la trayectoria del proyecto</strong> (Oscar Giménez 27-abr Pregrabado · Alejandro Fabián 30-abr Capacitación Vivo). Las ventas restantes que el equipo cuenta como propias del proyecto se cobraron por canales alternativos (MercadoPago link directo, transferencia). Esto valida con fuerza la migración a Drive directo.</p>
         </div>
       </details>
 
@@ -770,112 +776,265 @@
 <section id="plan" class="py-16 px-6 bg-mdi-dark text-white">
   <div class="max-w-7xl mx-auto">
     <div class="mb-10">
-      <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">08 · Plan forward</div>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">2 semanas de reestructuración · roadmap 3 meses</h2>
+      <div class="text-xs font-mono uppercase tracking-widest text-mdi-green mb-2">08 · Plan forward · 30 días</div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ingeniería inversa: $5.000 USD netos en 30 días</h2>
       <p class="text-slate-300 max-w-3xl text-lg">
-        Meta financiera nueva: <strong class="text-mdi-green">$5.000 USD netos en 3 meses</strong> via volumen low-ticket. 500–800 ventas a USD $10 c/u. Esto es lo que vamos a ejecutar.
+        Sin eventos presenciales ni virtuales. <strong class="text-mdi-green">100% productos low-ticket</strong>: pregrabados + ebooks + reventa de cursos. Catálogo de 6 productos $5–$20 USD. Cobro directo via MercadoPago, entrega automática via Drive. Sprint de 30 días con expansión geográfica AR + CL + UY.
       </p>
     </div>
 
-    <!-- Semana 1 -->
+    <!-- Reposicionamiento marca -->
+    <div class="mb-10 p-6 bg-mdi-green/10 border border-mdi-green/30 rounded-2xl">
+      <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-2">Reposicionamiento de marca</div>
+      <h3 class="font-bold text-2xl mb-3">MDI = Motos como pilar central + AC + Eléctrico como hermanos</h3>
+      <p class="text-slate-200 leading-relaxed">
+        La data CTWA confirma que motos es el winner (90% del volumen reciente). AC y eléctrico son nichos complementarios al mismo público técnico independiente. Landing v2 reflejará: motos al frente, AC y eléctrico como expansiones naturales del repertorio.
+      </p>
+    </div>
+
+    <!-- Catálogo low-ticket -->
     <div class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S1</div>
-        <div>
-          <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">Semana 1 · 12–18 mayo</div>
-          <h3 class="font-bold text-2xl">Sistema venta directa + producto $10 USD funcionando</h3>
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-green mb-3">🛠 El Solar</div>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li>▸ Diseñar e implementar sistema MercadoPago Link → Apps Script → email automático con Drive</li>
-            <li>▸ Crear carpetas Drive con material organizado por producto (Pregrabado, Manual AC, Manual Electricidad)</li>
-            <li>▸ Pauta moderada CTWA ~$5/día apuntando al pregrabado low-ticket</li>
-            <li>▸ Plantilla de respuesta automática WhatsApp con MP link</li>
-            <li>▸ Documentar paso a paso para Miguel (manual fallback)</li>
-          </ul>
-        </div>
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-green mb-3">👨‍🔧 Miguel</div>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li>▸ Confirmar con Mauro decisión sobre clase capacitación (realizar / posponer 1 semana)</li>
-            <li>▸ Bajar precio pregrabado Hotmart a USD $10 finales (o pausarlo si pasamos todo a Drive)</li>
-            <li>▸ Comprar/conseguir material externo mecánica de motos para revender o usar como bonos</li>
-            <li>▸ Validar el sistema con compra propia end-to-end</li>
-            <li>▸ Compartir contacto de electricista colaborador (mencionado en kickoff marzo)</li>
-          </ul>
-        </div>
+      <h3 class="font-bold text-2xl mb-4 text-mdi-green">Catálogo low-ticket — 6 productos</h3>
+      <div class="overflow-x-auto bg-white/5 backdrop-blur border border-white/10 rounded-xl">
+        <table class="w-full text-sm">
+          <thead class="bg-white/10">
+            <tr>
+              <th class="text-left p-3 text-mdi-green">Producto</th>
+              <th class="text-right p-3 text-mdi-green">Precio USD</th>
+              <th class="text-left p-3 text-mdi-green">Responsable producción</th>
+              <th class="text-left p-3 text-mdi-green">Estado</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-200">
+            <tr class="border-t border-white/10"><td class="p-3">Manual Electricidad</td><td class="p-3 text-right font-bold">$5</td><td class="p-3">Miguel</td><td class="p-3"><span class="text-mdi-amber">50% hecho · terminar Sem 1</span></td></tr>
+            <tr class="border-t border-white/10"><td class="p-3">Manual AC Eléctrico</td><td class="p-3 text-right font-bold">$5</td><td class="p-3">Miguel + Gustavo</td><td class="p-3"><span class="text-mdi-amber">Crear Sem 1</span></td></tr>
+            <tr class="border-t border-white/10"><td class="p-3">Ebook Inyección Electrónica</td><td class="p-3 text-right font-bold">$5</td><td class="p-3">Mauro + Miguel</td><td class="p-3"><span class="text-mdi-amber">Crear Sem 1–2</span></td></tr>
+            <tr class="border-t border-white/10"><td class="p-3">Pregrabado Inyección Motos</td><td class="p-3 text-right font-bold">$10</td><td class="p-3">Mauro (existe)</td><td class="p-3"><span class="text-mdi-green">Migrar Hotmart → Drive</span></td></tr>
+            <tr class="border-t border-white/10"><td class="p-3">Reventa Curso Scooter + bonus MDI</td><td class="p-3 text-right font-bold">$15</td><td class="p-3">Miguel compra + adapta</td><td class="p-3"><span class="text-mdi-amber">Sem 2</span></td></tr>
+            <tr class="border-t border-white/10 bg-mdi-green/5"><td class="p-3 font-bold">Bundle "El Independiente Pack 3-en-1"</td><td class="p-3 text-right font-bold">$20</td><td class="p-3">Combo · 3 ebooks</td><td class="p-3"><span class="text-mdi-amber">Sem 2</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Semana 2 -->
-    <div class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S2</div>
-        <div>
-          <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">Semana 2 · 19–25 mayo</div>
-          <h3 class="font-bold text-2xl">Landing v2 + catálogo ebooks low-ticket</h3>
-        </div>
+    <!-- Ingeniería inversa: tabla revenue -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-10">
+      <div class="bg-white/5 backdrop-blur border border-mdi-green/30 rounded-xl p-6">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-3">Mix de ventas requerido · 30 días</div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10"><th class="text-left py-2">Producto</th><th class="text-right py-2">Precio</th><th class="text-right py-2">Ventas</th><th class="text-right py-2">Sub-total</th></tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-white/5"><td class="py-2">Manual Electricidad</td><td class="text-right">$5</td><td class="text-right">150</td><td class="text-right">$750</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Manual AC Eléctrico</td><td class="text-right">$5</td><td class="text-right">120</td><td class="text-right">$600</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Ebook Inyección</td><td class="text-right">$5</td><td class="text-right">100</td><td class="text-right">$500</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Pregrabado Inyección</td><td class="text-right">$10</td><td class="text-right">120</td><td class="text-right">$1.200</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Reventa Scooter</td><td class="text-right">$15</td><td class="text-right">40</td><td class="text-right">$600</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2 font-bold text-mdi-green">Bundle 3-en-1</td><td class="text-right">$20</td><td class="text-right">75</td><td class="text-right font-bold text-mdi-green">$1.500</td></tr>
+            <tr class="bg-mdi-green/10 font-bold text-white"><td class="py-3">TOTAL</td><td class="text-right">—</td><td class="text-right">605</td><td class="text-right text-mdi-green">$5.150</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-3">≈ <strong>20 ventas/día durante 30 días</strong> · realista con la audiencia que ya tenemos validada</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-green mb-3">🛠 El Solar</div>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li>▸ Rediseño landing reflejando diversidad: Motos · AC · Electricidad como pilares</li>
-            <li>▸ Sección "Tienda" con catálogo low-ticket (Manual AC $5, Manual Electricidad $5, Pregrabado Inyección $10, Bundle $20)</li>
-            <li>▸ 2–3 funnels: ebook → upsell pregrabado → upsell vivo trimestral</li>
-            <li>▸ Pauta segmentada por producto (1 ad set por vertical)</li>
-            <li>▸ Daily reviews + ajustes budget según data</li>
-          </ul>
-        </div>
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-green mb-3">👨‍🔧 Miguel</div>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li>▸ Terminar manual electricidad (50% hecho según reunión)</li>
-            <li>▸ Operar respuesta WhatsApp con plantillas + MP link</li>
-            <li>▸ Mantener cap 45–60 conv/día (avisar si saturación)</li>
-            <li>▸ Producir 2 videos orgánicos AC/Inyección/Electricidad por semana</li>
-            <li>▸ Reportar ventas Drive vs Hotmart al cierre de cada día</li>
-          </ul>
-        </div>
+
+      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6">
+        <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-3">Inversión proyectada · 30 días</div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10"><th class="text-left py-2">Item</th><th class="text-right py-2">USD</th></tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-white/5"><td class="py-2">Pauta Meta ($25–35/d × 30 días)</td><td class="text-right">$750–1.050</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Creadores aliados (2–3 × $100–150/mes)</td><td class="text-right">$200–450</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Comisión MercadoPago (605 × ~$0.12)</td><td class="text-right">$75</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2">Compra material reventa (scooter)</td><td class="text-right">$50–100</td></tr>
+            <tr class="border-b border-white/5"><td class="py-2 text-slate-500">Tools (MP/Drive/Apps Script)</td><td class="text-right text-slate-500">$0</td></tr>
+            <tr class="bg-white/10 font-bold text-white"><td class="py-3">TOTAL INVERSIÓN</td><td class="text-right">$1.075–1.675</td></tr>
+            <tr class="bg-mdi-green/20 font-bold text-mdi-green"><td class="py-3">MARGEN NETO PROYECTADO</td><td class="text-right text-xl">$3.475–4.075</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-3">Para llegar exacto a <strong class="text-mdi-green">$5K netos</strong>: agregar producto premium $30–40, escalar a 700 ventas, o reducir spend Meta si orgánico amplifica</p>
       </div>
     </div>
 
-    <!-- Mes 2-3 -->
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-mdi-amber text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">M2-3</div>
-        <div>
-          <div class="text-xs font-mono uppercase tracking-widest text-mdi-amber">Mes 2–3 · junio – julio</div>
-          <h3 class="font-bold text-2xl">Volumen + escalamiento + próximo evento vivo</h3>
-        </div>
-      </div>
+    <!-- Foco geográfico expandido -->
+    <div class="mb-10 p-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl">
+      <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-3">Foco geográfico expandido: AR + CL + UY</div>
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-amber mb-2">Meta financiera</div>
-          <div class="text-3xl font-extrabold mb-2">$5K USD</div>
-          <p class="text-xs text-slate-400">netos en 3 meses · 500–800 tickets de $10 USD</p>
+        <div>
+          <div class="font-bold text-lg">🇦🇷 Argentina</div>
+          <p class="text-sm text-slate-300 mt-1">Mercado validado actual · continuar</p>
         </div>
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-amber mb-2">Pace requerido</div>
-          <div class="text-3xl font-extrabold mb-2">~10/día</div>
-          <p class="text-xs text-slate-400">ventas low-ticket promedio · sustentable con cap Miguel actual</p>
+        <div>
+          <div class="font-bold text-lg">🇨🇱 Chile</div>
+          <p class="text-sm text-slate-300 mt-1">Mismo idioma · MP funciona · mecánicos sin saturación de competencia formal</p>
         </div>
-        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
-          <div class="font-bold text-mdi-amber mb-2">Próximo evento vivo</div>
-          <div class="text-3xl font-extrabold mb-2">Jul/Ago</div>
-          <p class="text-xs text-slate-400">replica fórmula 9-10 may · al cap de 100 cupos con base low-ticket ya cultivada</p>
+        <div>
+          <div class="font-bold text-lg">🇺🇾 Uruguay</div>
+          <p class="text-sm text-slate-300 mt-1">Audiencia premium con poder adquisitivo en USD · MP funciona</p>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 mt-3">Resultado esperado: 1.5–2× audiencia alcanzable sin costos operativos adicionales</p>
+    </div>
+
+    <!-- Creadores aliados -->
+    <div class="mb-10 p-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl">
+      <div class="text-xs uppercase tracking-widest text-mdi-green font-bold mb-3">Estrategia de creadores aliados</div>
+      <p class="text-slate-200 mb-4">El equipo interno (Mauro motos · Gustavo AC · Miguel eléctrico) produce material técnico. Para amplificación viral hace falta sumar creadores con audiencia propia. <strong>Acción cliente:</strong> Miguel, Mauro y Gustavo proponen 1–2 creadores cada uno de sus redes existentes en cada vertical para iniciar conversación de colaboración.</p>
+      <div class="grid md:grid-cols-3 gap-3 text-sm">
+        <div class="bg-white/5 rounded-lg p-3">
+          <div class="font-bold">Motos</div>
+          <p class="text-xs text-slate-300 mt-1">Mauro produce · creador externo distribuye · revshare 20–30% o $100–150 flat</p>
+        </div>
+        <div class="bg-white/5 rounded-lg p-3">
+          <div class="font-bold">Aire Acondicionado</div>
+          <p class="text-xs text-slate-300 mt-1">Gustavo produce · creador externo distribuye · mismo modelo</p>
+        </div>
+        <div class="bg-white/5 rounded-lg p-3">
+          <div class="font-bold">Eléctrico</div>
+          <p class="text-xs text-slate-300 mt-1">Miguel produce · creador externo distribuye · mismo modelo</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 semanas -->
+    <h3 class="font-bold text-2xl mb-6 text-mdi-green">Calendario de las 4 semanas</h3>
+
+    <div class="space-y-6">
+      <!-- Semana 1 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S1</div>
+          <div>
+            <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">12–18 mayo · Foundation</div>
+            <h4 class="font-bold text-xl">Sistema funcionando + 2 productos listos</h4>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-green mb-2">🛠 El Solar</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Sistema MercadoPago Link + Apps Script + Drive operativo</li>
+              <li>▸ Plantillas WhatsApp con MP link por producto</li>
+              <li>▸ Pauta Meta arranque $10–15/d testeando pregrabado $10</li>
+              <li>▸ Identificar 2–3 creadores aliados con propuesta de colaboración</li>
+              <li>▸ Documentar manual fallback para Miguel</li>
+            </ul>
+          </div>
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-green mb-2">👨‍🔧 Equipo MDI</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Miguel: terminar Manual Electricidad ($5)</li>
+              <li>▸ Miguel + Gustavo: crear Manual AC Eléctrico ($5)</li>
+              <li>▸ Mauro: migrar Pregrabado a Drive a $10</li>
+              <li>▸ Cada uno propone 1–2 creadores aliados de su red</li>
+              <li>▸ Validar sistema con compra propia end-to-end</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="mt-6 p-5 bg-mdi-green/10 border border-mdi-green/30 rounded-xl">
-        <div class="font-bold text-mdi-green mb-2">Por qué este modelo es sustentable</div>
-        <p class="text-sm text-slate-200 leading-relaxed">
-          Hoy un evento vivo a $55 USD necesita 6–9 ventas mensuales solo para cubrir costos. Con ticket $10 USD, el mismo flujo de 245 conversaciones generadas en una semana convertiría 30–50 ventas (12–20% conversion en low-ticket es realista vs 5% en high-ticket por psicología de "precio bajo, decisión rápida"). Eso son $300–500 USD netos por semana, sumado a los 1–2 eventos vivos trimestrales = sostenible y escalable.
-        </p>
+      <!-- Semana 2 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-12 h-12 bg-mdi-green text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S2</div>
+          <div>
+            <div class="text-xs font-mono uppercase tracking-widest text-mdi-green">19–25 mayo · Catálogo completo</div>
+            <h4 class="font-bold text-xl">6 productos disponibles + landing v2</h4>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-green mb-2">🛠 El Solar</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Rediseño landing v2: motos como pilar + AC/eléctrico como hermanos</li>
+              <li>▸ Sección "Tienda" con catálogo completo low-ticket</li>
+              <li>▸ Pauta segmentada $20–30/d · 3 ad sets (motos / AC / eléctrico)</li>
+              <li>▸ Bundle 3-en-1 con cross-sell automatizado</li>
+              <li>▸ Daily reviews + ajustes según data</li>
+            </ul>
+          </div>
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-green mb-2">👨‍🔧 Equipo MDI</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Mauro + Miguel: Ebook Inyección Electrónica listo ($5)</li>
+              <li>▸ Miguel: comprar y adaptar Curso Scooter ($15)</li>
+              <li>▸ Operar WhatsApp con plantillas + reportar ventas Drive</li>
+              <li>▸ Onboarding creadores aliados identificados</li>
+              <li>▸ 2 piezas orgánicas/semana cada vertical</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+      <!-- Semana 3 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-12 h-12 bg-mdi-amber text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S3</div>
+          <div>
+            <div class="text-xs font-mono uppercase tracking-widest text-mdi-amber">26 may – 1 jun · Aceleración</div>
+            <h4 class="font-bold text-xl">Expansión geográfica AR + CL + UY · creadores activos</h4>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-amber mb-2">🛠 El Solar</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Expansión targeting Meta a Chile + Uruguay</li>
+              <li>▸ Escalar pauta a $30–40/d con 3 ad sets segmentados</li>
+              <li>▸ Custom audiences "Visitantes Landing" para retargeting</li>
+              <li>▸ Optimizar mix por producto según data Sem 1–2</li>
+            </ul>
+          </div>
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-amber mb-2">👨‍🔧 Equipo MDI</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Creadores aliados publicando 3–4 piezas/semana cada uno</li>
+              <li>▸ Volumen pleno respuesta WhatsApp (50–80 conv/d)</li>
+              <li>▸ Validar conversion por producto para optimizar mix</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semana 4 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-12 h-12 bg-mdi-amber text-mdi-dark rounded-xl flex items-center justify-center font-extrabold text-lg">S4</div>
+          <div>
+            <div class="text-xs font-mono uppercase tracking-widest text-mdi-amber">2–8 junio · Cierre meta</div>
+            <h4 class="font-bold text-xl">Sprint final · validación $5K USD netos</h4>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-amber mb-2">🛠 El Solar</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Bundles promo de cierre de mes</li>
+              <li>▸ Pauta optimizada al producto ganador</li>
+              <li>▸ Reporte final del sprint con métricas reales</li>
+              <li>▸ Decisión sobre mes 2 con data en mano</li>
+            </ul>
+          </div>
+          <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5">
+            <div class="font-bold text-mdi-amber mb-2">👨‍🔧 Equipo MDI</div>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li>▸ Sprint final con creadores aliados</li>
+              <li>▸ Atención WhatsApp pico</li>
+              <li>▸ Validar margen neto real vs proyectado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eventos: pausa indefinida -->
+    <div class="mt-10 p-6 bg-rose-500/10 border border-rose-500/30 rounded-xl">
+      <div class="text-xs uppercase tracking-widest text-rose-300 font-bold mb-2">⏸ Eventos presenciales y virtuales · PAUSA INDEFINIDA</div>
+      <p class="text-slate-200 leading-relaxed">
+        El equipo viene agotado de cursos presenciales y virtuales con resultados que no compensan el esfuerzo. <strong>Pausamos todos los eventos en vivo</strong> hasta tener data del sprint low-ticket. Si los 30 días cumplen meta, evaluamos relanzar 1 evento puntual sin compromiso de calendario. Si no, seguimos optimizando low-ticket exclusivamente.
+      </p>
     </div>
   </div>
 </section>
@@ -1003,11 +1162,20 @@
     </details>
 
     <details class="card mb-4">
-      <summary class="font-bold text-lg text-mdi-dark">Hotmart productos · IDs</summary>
-      <div class="pt-4 font-mono text-xs space-y-1 text-slate-700">
-        <div><span class="text-slate-400">Producto vivo (actual):</span> H105380102G — Capacitación Virtual EN VIVO Inyección Motos · USD $55</div>
-        <div><span class="text-slate-400">Producto pregrabado:</span> O105383269C — Curso Pregrabado · USD $37 (bajar a USD $10)</div>
-        <div><span class="text-slate-400">Ebook AC (no activado):</span> H105412676D — El Código MDI</div>
+      <summary class="font-bold text-lg text-mdi-dark">Hotmart · productos + ventas confirmadas API</summary>
+      <div class="pt-4 text-sm space-y-2 text-slate-700">
+        <p><strong>Ventas COMPLETE en toda la trayectoria del proyecto (consulta API 11-may):</strong></p>
+        <ul class="ml-4 space-y-1 text-xs font-mono">
+          <li>▸ 2026-04-27 06:21 · Oscar Giménez · Clase de Inyección de Motos Pre Grabada</li>
+          <li>▸ 2026-04-30 10:58 · Alejandro Fabián Fiammengo · Capacitación Virtual en Vivo Inyección</li>
+        </ul>
+        <p class="text-xs text-slate-500 mt-3">Total: <strong>2 ventas</strong>. Las ventas restantes asociadas al proyecto se procesaron por canales alternativos (MercadoPago directo, transferencias).</p>
+        <p class="mt-3"><strong>IDs de productos:</strong></p>
+        <div class="font-mono text-xs space-y-1">
+          <div><span class="text-slate-400">Producto vivo (actual):</span> H105380102G — Capacitación Virtual EN VIVO Inyección Motos · USD $55</div>
+          <div><span class="text-slate-400">Producto pregrabado:</span> O105383269C — Curso Pregrabado · USD $37 (migrar a Drive a $10)</div>
+          <div><span class="text-slate-400">Ebook AC (no activado):</span> H105412676D — El Código MDI</div>
+        </div>
       </div>
     </details>
 
